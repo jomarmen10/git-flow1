@@ -6,9 +6,15 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
+<<<<<<< HEAD
+    "express": "^4.16.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.3"
+=======
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "method-override": "^3.0.0"
+>>>>>>> master
   },
   "devDependencies": {},
   "scripts": {
