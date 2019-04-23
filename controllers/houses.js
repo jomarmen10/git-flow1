@@ -5,7 +5,7 @@ const House = require ('../models/houses');
 
 //new route
 router.get('/new', (req,res) => {
-    res.render ('articles/new.ejs');
+    res.render ('houses/new.ejs');
 });
 
 //index route get route and post
@@ -27,7 +27,7 @@ router.post('/', (req,res) => {
         if(err){
             res.send(err);
         }else{
-            res.redirect('/articles');
+            res.redirect('/houses');
         }
     });
 });
@@ -45,8 +45,37 @@ router.get('/:id', (req,res) => {
 });
 
 //Edit route get and put req
-router.get('/:id/edit', (req,))
+router.get('/:id/edit', (req,  res) => {
+    House.findById(req.params.id, (err, foundHouse) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.render('houses/edit.ejs', {
+                house:foundHouse
+            });
+        }
+    });
+});
+router.put('/:id', (req, res)=> {
+    House.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, foundHouse) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.redirect('/houses');
+        }
+    });
+});
 
+//delete route
+router.delete('/:id', (req,res) => {
+    House.findByIdAndRemove(req.params.id, (err, deletedHouse) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.redirect('/houses');
+        }
+    });
+});
 
 
 module.exports = router;
