@@ -8,14 +8,10 @@ const methodOverride = require("method-override");
 //const session = require('express-session');
 
 require("dotenv").config();
-const houseController = require("./controller");
-
 //require modules here
-require("./db/db");
+// require('./db/db');
 
 const housesController = require("./controllers/houses");
-
-app.use("/", houseController);
 
 //MiddleWare Area
 app.use(bodyParser.urlencoded({ extended: false }));
