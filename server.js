@@ -5,13 +5,14 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
+const housesController = require("./controllers/houses");
+const realtorsController = require("./controllers/realtors");
+
 //const session = require('express-session');
 
 require("dotenv").config();
 //require modules here
 // require('./db/db');
-
-const housesController = require("./controllers/houses");
 
 //MiddleWare Area
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +23,7 @@ app.use(methodOverride("_method"));
 //   resave: false,
 //   saveUninitalized: false,
 // }));
+app.use("/realtor", realtorsController);
 
 app.use("/houses", housesController);
 
