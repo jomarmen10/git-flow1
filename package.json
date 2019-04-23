@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "dotenv": "^7.0.0"
+    "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "method-override": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
