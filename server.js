@@ -1,12 +1,7 @@
-asdadasdadasdasdasdad
-//hello
+const express = require('express');
+const app = express();
+require('dotenv').config()
 
-const add = () => {
-  console.log("anis");
-};
-
-port = 3000;
-
-app.listen(port, err {
-    console.log('app is listening on port:', port);
-})
+app.listen(3000,()=>{
+  console.log('running on port:', process.env)
+});
