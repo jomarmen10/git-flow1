@@ -33,10 +33,21 @@ router.post('/', (req,res) => {
 });
 //show route
 router.get('/:id', (req,res) => {
-    House.findById(req.params.id, (err, foundHouse))
-})
+    House.findById(req.params.id, (err, foundHouse) => {
+        if (err) {
+            res.send(err);
+        }else{
+            res.render('houses/show.ejs', {
+                house:foundHouse
+            });
+        }
+    });
+});
+
+//Edit route get and put req
 
 
 
-module.exports = router
+
+module.exports = router;
 
