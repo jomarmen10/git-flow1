@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 require('dotenv').config()
+const controller = require('./controller')
 
-// hello
+
+app.use('/', controller)
 
 
 app.listen(3000,()=>{
