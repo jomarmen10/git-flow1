@@ -1,5 +1,10 @@
 asdadasdadasdasdasdad
 //hello
+
+const add = () => {
+  console.log("anis");
+};
+
 port = 3000;
 
 app.listen(port, err {
