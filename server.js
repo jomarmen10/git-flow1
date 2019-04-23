@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const methodOverride =  require('method-override');
 //const session = require('express-session');
 
-require('dotenv').config()
+//require('dotenv').config()
 //require modules here
 // require('./db/db');
 
