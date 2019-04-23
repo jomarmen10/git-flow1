@@ -1,4 +1,5 @@
 //Set up modules here
+const PORT = 3000;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ const methodOverride =  require('method-override');
 //require modules here
 require('./db/db');
 
-const housesController = require('./controllers/houses');
+const housesController = require('./controller/houses');
 
 //MiddleWare Area
 app.use(bodyParser.urlencoded({extended:false}));
