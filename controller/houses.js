@@ -45,7 +45,7 @@ router.get('/:id', (req,res) => {
 });
 
 //Edit route get and put req
-
+router.get('/:id/edit', (req,))
 
 
 
