@@ -2,6 +2,15 @@
 <html>
   <head>
     <title></title>
+    <style>
+    #map{
+      height: 500px;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <header>
@@ -11,11 +20,97 @@
     <main>
         <h2> List of Houses</h2>
         <ul>
+        <h1>hello</h1>
       
         <%houses.forEach((h,i)=>{%>
         <a href="/houses/<%=houses[i]._id%>"><li><%=h.list%></li></a>
         <%})%>
         </ul>
+
+        <h1>google map</h1>
+<div id="map">
+    </div>
+<script>
+    function initMap(){
+        //map options 
+let options ={
+    zoom: 8,
+    center: {lat:34.0522, lng:-118.2437}
+}
+//new map
+let map = new google.maps.Map(document.getElementById('map'), options);
+  /*
+//add marker
+let marker = new google.maps.Marker({
+    position:{lat:34.046698, lng:-118.2426782},
+    map:map
+});
+let infoWindow = new google.maps.InfoWindow({
+    content: '<h1>General Assembly</h1>'
+});
+marker.addListener('click', function(){
+    infoWindow.open(map, marker);
+});
+*/
+
+
+addMarker({ coords:{lat:34.046698,lng:-118.2426782}, content: '<h1>General Assembly</h1>' });
+addMarker({ coords:{lat:34.0430175,lng:-118.2694428}, content: '<h1>Staple Center</h1>' });
+
+
+//FUNCTION FOR MARKER FOR SERVERAL MARKERS WITHOUT HARD CODE
+function addMarker(props){
+let marker = new google.maps.Marker({
+    position:props.coords,
+    map:map
+});
+
+if(props.content){
+    let infoWindow = new google.maps.InfoWindow({
+    content:props.content
+});
+marker.addListener('click', function(){
+    infoWindow.open(map, marker);
+});
+}
+
+
+}
+
+
+    }
+</script>
+<script>
+//call geocode
+geocode();
+function geocode(){
+  let location ='630 masselin avenue Los Angeles';
+  axios.get(https://maps.googleapis.com/maps/api/geocode/json,  {
+    params:{
+      address: location,
+      key:'AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI'
+    }
+  })
+  .then(function(response){
+    console.log(response);
+
+  })
+.catch(function(error){
+console.log(error);
+});
+
+}
+
+  
+</script>
+
+
+
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
+    </script>  
+
+
     </main>
   </body>
 </html>
