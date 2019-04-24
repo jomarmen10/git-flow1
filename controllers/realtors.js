@@ -14,31 +14,31 @@ router.get("/", async (req, res) => {
     res.send(err);
   }
 
-  // console.log("route hit");
-  // Realtors.find({}, (err, foundRealtors) => {
-  //   if (err) {
-  //     res.send(err);
-  //   } else {
-  //     res.render("realtors/index.ejs");
-  //   }
-  // });
+  console.log("route hit");
+  Realtors.find({}, (err, foundRealtors) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("realtors/index.ejs");
+    }
+  });
 });
 
 router.get("/new", (req, res) => {
   res.render("realtors/new.ejs");
 });
 
-// router.get("/new", (req, res) => {
-//   Realtors.find({}, (err, allRealtors) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.render("realtors/new.ejs", {
-//         realtor: allRealtors
-//       });
-//     }
-//   });
-// });
+router.get("/new", (req, res) => {
+  Realtors.find({}, (err, allRealtors) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render("realtors/new.ejs", {
+        realtor: allRealtors
+      });
+    }
+  });
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -50,16 +50,16 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.post("/", (req, res) => {
-//   Realtors.create(req.body, (err, newRealtors) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log(newRealtors);
-//       res.redirect("/realtor");
-//     }
-//   });
-// });
+router.post("/", (req, res) => {
+  Realtors.create(req.body, (err, newRealtors) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(newRealtors);
+      res.redirect("/realtor");
+    }
+  });
+});
 
 router.get("/:id", async (req, res) => {
   try {
@@ -72,17 +72,17 @@ router.get("/:id", async (req, res) => {
     res.send(err);
   }
 });
-// router.get("/:id", (req, res) => {
-//   Realtors.findById(req.params.id, (err, showRealtors) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render("realtors/show.ejs", {
-//         realtor: showRealtors
-//       });
-//     }
-//   });
-// });
+router.get("/:id", (req, res) => {
+  Realtors.findById(req.params.id, (err, showRealtors) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("realtors/show.ejs", {
+        realtor: showRealtors
+      });
+    }
+  });
+});
 router.delete("/:id", async (req, res) => {
   try {
     const deletedRealtor = await Realtor.findByIdAndRemove(req.params.id);
@@ -92,12 +92,12 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// router.delete("/:id", (req, res) => {
-//   Realtors.findByIdAndRemove(req.params.id, (err, deletedRealtor) => {
-//     console.log(deletedRealtor, " this is deletedRealtor");
-//     res.redirect("/realtor");
-//   });
-// });
+router.delete("/:id", (req, res) => {
+  Realtors.findByIdAndRemove(req.params.id, (err, deletedRealtor) => {
+    console.log(deletedRealtor, " this is deletedRealtor");
+    res.redirect("/realtor");
+  });
+});
 
 router.get("/:id/edit", async (req, res) => {
   try {
@@ -108,11 +108,11 @@ router.get("/:id/edit", async (req, res) => {
   } catch (err) {
     res.send(err);
   }
-  // Realtors.findById(req.params.id, (err, foundRealtors) => {
-  //   res.render("edit.ejs", {
-  //     realtor: foundRealtors
-  //   });
-  // });
+  Realtors.findById(req.params.id, (err, foundRealtors) => {
+    res.render("edit.ejs", {
+      realtor: foundRealtors
+    });
+  });
 });
 
 router.put("/:id", async (req, res) => {

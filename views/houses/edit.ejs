@@ -9,6 +9,12 @@
     </header>
     <main>
       <h1>House Edit route In</h1>
+
+      <form action="/house/<%=id%>?_method=PUT" method="POST">
+      <input type="text" name="name" value="<%=house.list%>"/>
+    
+    <button type="submit">EDIT</button>
+ </form>
     </main>
   </body>
 </html>
