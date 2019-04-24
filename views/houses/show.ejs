@@ -12,14 +12,26 @@
       
       <section>
          <h1><%=house.list%></h1>
+      </section>
+
+      <section>
           <img src = "<%=house.img%>">
-              <h2>Address:<%=house.address%><br/>
-               $<%=house.price%><br/>
-                Type:<%=house.type%><br/>
-                Number of Rooms:<%=house.rooms%><br/>
-              </h2>
+      </section>
+
+      <section>
+        <h2>Address:<%=house.address%><br/>
+          $<%=house.price%><br/>
+          Type:<%=house.type%><br/>
+          Number of Rooms:<%=house.rooms%><br/></h2>
+      </section>
+
+      <section>
+          <p><%=house.body%></p>
+      </section>
+
+      <section>
               
-                   <p> <%=house.body%></p>
+                   
           <a href = "/houses/<%=house._id%>/edit">Edit</a>
           <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
           <input type = "submit" value = "Delete House"/>

@@ -11,6 +11,10 @@
       <h1>House new route In</h1>
       <section>
       <form action='/houses' method="post">
+        <select name = "realtorId">
+        <% for(let i = 0; i < realtors.length; i++) {%>
+          <option value = "<%=realtors[i]._id%>"><%=realtors[i].name%></option>
+        <%}%>
       <input type="text" name="list" placeholder="House Listing"/>
       <input type = "text" name ="address" placeholder = "Street Name, Zip, State"/>
       <input type = "text" name = "price" placeholder = " Price Range"/><br/>
@@ -20,7 +24,7 @@
       <input type = "text" name = "type" placeholder = "Apts, Condo, Houses, Studio"/>
       <input type = "text" name = "rooms" placeholder = "Number of rooms" /><br/>
       <textarea name = "body" placeholder = "House Listing Info Here"></textarea><br/>
-      <button type="submit" value = "Publish House">Publish House Listing</button>
+      <button type="submit" value = "Publish House Listing">Publish House Listing</button>
       
       </section>
           <section>

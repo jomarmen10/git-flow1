@@ -11,6 +11,15 @@
       <h1>House Edit route In</h1>
 
       <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
+      <select name = "realtorId">
+      <%for(let i = 0; i < realtor.length; i++) {%>
+        <option value = "<%=realtor[i]._id%>"
+        <%if(realtor[i].id.toString() === houseRealtor._id.toString ()){%>
+          selected
+      <%}%>
+      ><%=realtors[i].name%></option>
+      <%}%>
+      </select>
             <input type="text" name="list" value = "<%=house.list%> " placeholder="House Listing"/><br/>
             <input type = "text" name = "img" value = "<%=house.img%> " placeholder ="photo url here"/><br/>
             <input type = "text" name = "address" value = "<%=house.address%> " placeholder ="Street Name, Zip, State"/><br/>
@@ -18,7 +27,7 @@
             <input type = "text" name = "type" value = "<%=house.type%> " placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
             <input type = "text" name = "rooms" value  ="<%=house.rooms%>" placeholder = "Number of Rooms"/>
             <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
-                        <button type="submit">EDIT</button>
+                        <button type="submit">Edit House Listing</button>
     </form>
     </main>
   </body>
