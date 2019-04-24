@@ -13,7 +13,7 @@ require("./db/db.js");
 
 //require('dotenv').config()
 //require modules here
-// require('./db/db');
+require("./db/db");
 
 //MiddleWare Area
 app.use(bodyParser.urlencoded({ extended: false }));
