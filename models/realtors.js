@@ -4,5 +4,5 @@ const realtorsSchema = new mongoose.Schema({
   name: { type: String, required: true }
 });
 
-const Realtors = mongoose.model("Realtors", realtorsSchema);
-module.exports = Realtors;
+const Realtor = mongoose.model("Realtor", realtorsSchema);
+module.exports = Realtor;

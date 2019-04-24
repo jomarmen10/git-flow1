@@ -9,6 +9,12 @@
     </header>
     <main>
       <h1>realtor Edit route In</h1>
+
+      <form action="/realtor/<%=id%>?_method=PUT" method="POST">
+      <input type="text" name="name" value="<%=realtor.name%>"/>
+    
+    <button type="submit">EDIT</button>
+ </form>
     </main>
   </body>
 </html>

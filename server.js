@@ -7,10 +7,11 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const housesController = require("./controllers/houses");
 const realtorsController = require("./controllers/realtors");
+require("./db/db.js");
 
 //const session = require('express-session');
 
-require("dotenv").config();
+//require('dotenv').config()
 //require modules here
 // require('./db/db');
 
