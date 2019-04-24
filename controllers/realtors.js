@@ -102,7 +102,7 @@ router.delete("/:id", (req, res) => {
 router.get("/:id/edit", async (req, res) => {
   try {
     const foundRealtor = await Realtor.findById(req.params.id);
-    res.render("realtor/edit.ejs", {
+    res.render("realtors/edit.ejs", {
       realtor: foundRealtor
     });
   } catch (err) {
