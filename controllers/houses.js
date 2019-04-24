@@ -56,13 +56,17 @@ router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
     }
 });
 router.put('/:id', async(req, res)=> {
-  try{
-    const foundOne = await House.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect('/houses')
-  }catch(err){
-    res.send(err)
-  }
+    try{
+        const foundHouse = await House.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new:true});
+        res.redirect('/houses')
+    }catch(error){
+        res.send(error);
+    }
 });
+
 
 //delete route
 router.delete('/:id', async(req,res) => {
