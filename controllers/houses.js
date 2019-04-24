@@ -56,6 +56,7 @@ router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
     }
 });
 router.put('/:id', async(req, res)=> {
+<<<<<<< HEAD
     try{
         const foundHouse = await House.findByIdAndUpdate(
             req.params.id,
@@ -66,6 +67,16 @@ router.put('/:id', async(req, res)=> {
         res.send(error);
     }
 });
+=======
+  try{
+    const foundOne = await House.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/houses')
+  }catch(err){
+    res.send(err)
+  }
+});
+
+>>>>>>> master
 
 
 //delete route
