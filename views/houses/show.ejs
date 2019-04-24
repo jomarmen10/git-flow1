@@ -9,7 +9,15 @@
     </header>
     <main>
       <h1>House show route In</h1>
-      list: <%=house.list%>
+      
+      <section>
+         <h1><%=house.list%></h1>
+          <img src = "<%=house.img%>">
+          <p> <%=house.body%></p>
+          <a href = "/houses/<%=house._id%>/edit">Edit</a>
+          <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
+          <input type = "submit" value = "Delete House"/>
+        </section>
     </main>
   </body>
 </html>
