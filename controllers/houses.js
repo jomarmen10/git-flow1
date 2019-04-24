@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const House = require ('../models/houses');
-//Need Realor models here const Realtor = require ('../models/realtors'); //replace Realtor/ allRealtors
+const Realtor = require ('../models/realtors'); //replace Realtor/ allRealtors
 
 //new route
 router.get('/new', (req,res) => {
@@ -30,7 +30,7 @@ router.post('/', async(req, res)=>{
         res.send(err)
     }
 })
-    
+
 //show route
 router.get('/:id', async(req,res) => {
     try{
@@ -54,18 +54,16 @@ router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
     }catch(error){
         res.send(error);
     }
-});  
+});
 router.put('/:id', async(req, res)=> {
-    try{
-        const foundHouse = await House.findByIdAndUpdate(
-            req.params.id, 
-            req.body, 
-            {new:true});
-        res.redirect('/houses')
-    }catch(error){
-        res.send(error);
-    }
-});  
+  try{
+    const foundOne = await House.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/houses')
+  }catch(err){
+    res.send(err)
+  }
+});
+
 
 
 //delete route
@@ -80,4 +78,3 @@ router.delete('/:id', async(req,res) => {
 
 //added
 module.exports = router;
-
