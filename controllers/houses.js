@@ -30,7 +30,7 @@ router.post('/', async(req, res)=>{
         res.send(err)
     }
 })
-    
+
 //show route
 router.get('/:id', async(req,res) => {
     try{
@@ -54,16 +54,17 @@ router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
     }catch(error){
         res.send(error);
     }
-});  
+});
 router.put('/:id', async(req, res)=> {
     try{
-        const foundHouse = await House.findById(req.params.id, req.body, {new:true});
+        const foundHouse = await House.findByIdAndUpdate(req.params.id, req.body, {new:true});
         res.redirect('/houses' , {
+          
         });
     }catch(error){
         res.send(error);
     }
-});  
+});
 
 //delete route
 router.delete('/:id', async(req,res) => {
@@ -77,4 +78,3 @@ router.delete('/:id', async(req,res) => {
 
 //added
 module.exports = router;
-
