@@ -9,74 +9,70 @@ router.get('/new', (req,res) => {
 });
 
 //index route get route and post
-router.get('/', (req,res) => {
-    //res.render('houses/index.ejs');
-    // House.find({}, (err, foundHouses) => {
-    //     if (err) {
-    //         res.send(err);
-    //     }else{
-            res.render('houses/index.ejs', {
-               /// houses: foundHouses
+router.get('/', async(req,res) => {
+    try{
+        //const foundHouses = await House.find({});
+        res.render('houses/index.ejs', {
+        /// houses: foundHouses
             });
-       // }
+    }catch(error){
+            res.send(error);
+        }
    // });
 });
 
-router.post('/', (req,res) => {
-    // House.create(req.body, (err, createdHouse) => {
-    //     if(err){
-    //         res.send(err);
-    //     }else{
-            res.redirect('/houses');
-        //}
-    });
-// });
+router.post('/',  async(req,res) => {
+    try{
+        //const createdHouse = await House.create(req.body);
+        res.redirect('/houses');
+    }catch(error){
+        res.send(error);
+    }
+});
+    
 //show route
-router.get('/:id', (req,res) => {
-    House.findById(req.params.id, (err, foundHouse) => {
-        if (err) {
-            res.send(err);
-        }else{
-            res.render('houses/show.ejs', {
-              house:foundHouse
-            });
-       }
+router.get('/:id', async(req,res) => {
+    try{
+    //const foundHouse = await House.findById(req.body);
+    res.render('houses/show.ejs', {
+       // house:foundHouse
     });
- });
+    }catch(error){
+        res.send(error);
+    }
+});
 
 //Edit route get and put req
-router.get('/:id/edit', (req,  res) => {
-    // House.findById(req.params.id, (err, foundHouse) => {
-    //     if(err){
-    //         res.send(err);
-    //     }else{
-            res.render('houses/edit.ejs', {
-                house:foundHouse
-            });
-       // }
-    });
-//});
-router.put('/:id', (req, res)=> {
-    // House.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, foundHouse) => {
-    //     if(err){
-    //         res.send(err);
-    //     }else{
-            res.redirect('/houses');
-        //}
-    });
-//});
+router.get('/:id/edit', async(req,  res) => {
+    try{
+        //const foundHouse = await House.findById(req.params.id);
+        res.render('houses/edit.ejs', {
+            //house:foundHouse
+        });
+    }catch(error){
+        res.send(error);
+    }
+});  
+router.put('/:id', async(req, res)=> {
+    try{
+        //const foundHouse = await House.findById(req.params.id, req.body, {new:true});
+        res.redirect('/houses' , {
+        });
+    }catch(error){
+        res.send(error);
+    }
+});  
 
 //delete route
 router.delete('/:id', (req,res) => {
-    // House.findByIdAndRemove(req.params.id, (err, deletedHouse) => {
-    //     if(err){
-    //         res.send(err);
-    //     }else{
-            res.redirect('/houses');
-       // }
-    });
-//});
+    try{
+        //const deletedHouse = await House.findByIdAndRemove(req.params.id);
+        res.redirect('/houses');
+    }catch(error){
+        res.send(error);
+    }
+});
 
-
+//added
 module.exports = router;
 
