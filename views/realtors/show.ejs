@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <a href="#"><h1>Home</h1></a>
+    </header>
+    <main>
+      <h1>realtor show route In</h1>
+
+      <h1> <%=realtor.name%><br/></h1>
+
+<form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
+<button type="submit">DELETE</button>
+    </form>
+    <form action="/realtor/<%=realtor._id%>/edit" method="GET">
+    <button type="submit">edit</button>
+    </form>
+
+    </main>
+  </body>
+</html>
