@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Realtor = require("../models/realtors");
-<<<<<<< HEAD
-const House = require ('../models/houses');
-=======
 const House = require('../models/houses')
->>>>>>> master
 
 router.get("/", async (req, res) => {
   try {
