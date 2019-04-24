@@ -11,6 +11,7 @@
       <h1>House Edit route In</h1>
 
       <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
+
       <select name = "realtorId">
       <%for(let i = 0; i < realtor.length; i++) {%>
         <option value = "<%=realtor[i]._id%>"
