@@ -10,7 +10,9 @@
     <main>
       <h1>House show route In</h1>
       list: <%=house.list%>
-      <a href="/houses/<%=house._id%>/edit">edit</a>
+      </form>
+        <form action="/houses/<%=house._id%>/edit" method="GET">
+        <button type="submit">edit</button>
       </form>
     </main>
   </body>
