@@ -1,4 +1,6 @@
-console.log('hello');
+const House = require('../../models/houses')
+const Realtor = require('../../models/realtors')
+
 
 let price = [
   {
@@ -16,3 +18,5 @@ const getPrice = ()=>{
 
 
 console.log(price[0]['100k'])
+
+console.log(Realtor.name)
