@@ -14,11 +14,11 @@ require("./db/db.js");
 
 //require('dotenv').config()
 //require modules here
-//require('./db/db');
 
 //MiddleWare Area
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+app.use(express.static('public'));
 
 // app.use(sessions({
 //   secret: 'Random Secret String',

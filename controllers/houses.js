@@ -26,6 +26,7 @@ router.get('/', async(req,res) => {
     res.send(error);
   }
 });
+<<<<<<< HEAD
 /////////////////////////////////////////////// Working
 
 router.post("/", async (req, res) => {
@@ -37,6 +38,8 @@ router.post("/", async (req, res) => {
     res.send(err);
   }
 });
+=======
+>>>>>>> master
 
 
 router.post('/', async(req, res)=>{
@@ -95,19 +98,14 @@ router.delete('/:id', async(req,res) => {
     await foundRealtor.save();
     res.redirect('/houses');
   }catch(error){
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     res.send(error);
   }
 });
 
-// router.delete('/:id', async(req, res)=>{
-//   try{
-//     const deleteArticle = await Article.findByIdAndRemove(req.params.id);
-//     const foundAuthor = await Author.findOne({'articles': req.params.id});
-//     await foundAuthor.articles.remove(req.params.id);
-//     await foundAuthor.save();
-//   }catch(err){
-//     res.send(err)
-//   }
 
 //added
 module.exports = router;
