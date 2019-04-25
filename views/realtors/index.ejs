@@ -5,19 +5,13 @@
   </head>
   <body>
     <header>
-      <a href="#"><h5>Home</h5></a>
+      <a href="/houses"><h1>Home</h1></a>
     </header>
-    <main>  
- <h1>List of Realtors index page</h1>
+    <main>
+      <h1>List of Realtors index page</h1>
       <% for (let i=0; i<realtor.length; i++){%>
-    <p>
-<div>
-     <h2>  <%=realtor[i].name%></h2><br/>
- <a href="/realtor/<%=realtor[i]._id%>">Show slected realtor</a> </br>
-</div>
-    </p>
-    <%}%>
-   
+        <a href="/realtor/<%=realtor[i]._id%>"><h2><%=realtor[i].name%></h2></a>
+      <%}%>
     </main>
   </body>
 </html>

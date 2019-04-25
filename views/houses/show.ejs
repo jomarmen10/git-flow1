@@ -5,12 +5,13 @@
   </head>
   <body>
     <header>
-      <a href="#"><h1>Home</h1></a>
+      <a href="/houses"><h1>Home</h1></a>
     </header>
     <main>
       <h1>House show route In</h1>
-      
       <section>
+
+        <h1>for sale by: <a href="/realtor/<%=realtor._id%>"><%=realtor.name%></h1> </a>
          <h1><%=house.list%></h1>
           <img src = "<%=house.img%>">
               <h2>Address:<%=house.address%><br/>
@@ -18,12 +19,13 @@
                 Type:<%=house.type%><br/>
                 Number of Rooms:<%=house.rooms%><br/>
               </h2>
-              
-                   <p> <%=house.body%></p>
+
+          <p> <%=house.body%></p>
           <a href = "/houses/<%=house._id%>/edit">Edit</a>
-          <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
-          <input type = "submit" value = "Delete House"/>
+
         </section>
+
+
     </main>
   </body>
 </html>
