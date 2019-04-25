@@ -15,6 +15,7 @@ require("./db/db.js");
 //require modules here
 
 //MiddleWare Area
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(express.static('public'));

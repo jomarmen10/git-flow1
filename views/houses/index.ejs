@@ -3,6 +3,9 @@
   <head>
     <script defer type="text/javascript" src="/js/app.js"></script>
     <title></title>
+    <script defer type="text/javascript" src= "/js/map.js">
+      
+    </script>
     <style>
     #map{
       height: 500px;
@@ -10,13 +13,26 @@
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   </head>
   <body>
     <header class='house-index'>
       <a href="/houses"><h1>Home</h1></a>
       <h1> Houses Index</h1>
+
+    </header>
+    <main>
+        <h2> List of Houses</h2>
+        <ul>
+          <%for(let i = 0; i < houses.length; i++) {%>
+          <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>" data-img="<%=houses[i].img%>"> <%=houses[i].list%>
+          
+          </li> </a>
+          <%}%>
+        </ul>
+       <h1> <%=houses[1].address%></h1>
+      <h1>google map</h1>
+      <h2>enter location</h2>
       <form id="location-form">
         <input id="location-input" type="text">
       <select name="price">
@@ -45,139 +61,11 @@
       <div id="address-components"></div>
       <div id="geometry"></div>
 
-      <div id="map">
-      </div>
-    <script>
-      // let options ={}
-      let lat =34.0522;
-      let lng=-118.2437;
-      function initMap(){
-      //map options
 
-      options = {
-        zoom: 10,
-        center: {lat, lng}
-      }
-      //new map
-      let map = new google.maps.Map(document.getElementById('map'), options);
-      /*
-      //add marker
-      let marker = new google.maps.Marker({
-      position:{lat:34.046698, lng:-118.2426782},
-      map:map
-      });
-      let infoWindow = new google.maps.InfoWindow({
-      content: '<h1>General Assembly</h1>'
-      });
-      marker.addListener('click', function(){
-      infoWindow.open(map, marker);
-      });
-      */
+<div id="map">
+    </div>
 
 
-      addMarker({ coords:{lat:34.046698,lng:-118.2426782}, content: '<h1>General Assembly</h1>' });
-      addMarker({ coords:{lat:34.0430175,lng:-118.2694428}, content: '<h1>Staple Center</h1>' });
-
-
-      //FUNCTION  FOR SERVERAL MARKERS WITHOUT HARD CODE to be added in the loop
-      function addMarker(props){
-        let marker = new google.maps.Marker({
-          position:props.coords,
-          map:map
-      });
-
-      if(props.content){
-        let infoWindow = new google.maps.InfoWindow({
-          content:props.content
-        });
-          marker.addListener('click', function(){
-          infoWindow.open(map, marker);
-          });
-        }
-      }}
-    </script>
-
-<script>
-//call geocode
-//geocode();
-
-// get location
-let locationForm = document.getElementById('location-form');
-// let locationInput = document.querySelector('#location-input')
-
-// listin for submit location
-
-locationForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  geocode()
-
-});
-
-
-let longitude;
-let latitude;
-function geocode(){
-
-  var location = document.getElementById('location-input').value;
-  // let location ='630 masselin avenue Los Angeles';
-  axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
-    params:{
-      address: location,
-      key:'AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI'
-    }
-  })
-  .then(function(response){
-    //  show object of address
-    console.log(response);
-
-
-//formated address
-let formattedAddress = response.data.results[0].formatted_address;
-let  formattedAddressOutput=`
-<ul class="list-group">
-<li class= "list-group-item">${formattedAddress}</li>
-</ul>
-`;
-//address components
-
-let addressComponents = response.data.results[0].address_components;
-let addressComponentsOutput = '<ul class="list-group">';
-for(let i=0; i<addressComponents.length; i++){
-  addressComponentsOutput +=`
-  <li class="list-group-item">${addressComponents[i].types[0]}:${addressComponents[i].long_name}</li>
-  `;
-}
-
-//geo
-  lat = response.data.results[0].geometry.location.lat;
-  lng = response.data.results[0].geometry.location.lng;
-
-// options = {
-//   zoom: 10,
-//   center: {lat, lng}
-// }
-//////////!!!!!!!!!!!!!!!!!!!!!!!!!/////
-
-initMap();
-console.log(lat);
-
-let  geometryOutput=`
-<ul class="list-group">
-<li class= "list-group-item"><strong>latitude</strong>:${lat}</li>
-<li class= "list-group-item"><strong>longitude</strong>:${lng}</li>
-
-</ul>
-`;
-
-
-  })
-.catch(function(error){
-console.log(error);
-});
-
-}
-
-</script>
 
  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">

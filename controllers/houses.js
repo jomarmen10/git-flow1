@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const House = require ('../models/houses');
 const Realtor = require ('../models/realtors'); //replace Realtor/ allRealtors
 
