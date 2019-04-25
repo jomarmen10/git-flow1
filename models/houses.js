@@ -5,7 +5,7 @@ const houseSchema = mongoose.Schema ({
     body: String,  //description
     img: String,   //image
     address: String,
-    price: Number,
+    price: String,
     type: String,
     rooms: Number,
 });

@@ -12,8 +12,8 @@
       <section>
       <form action='/houses' method="post">
         <select name = "realtorId">
-        <% for(let i = 0; i < realtors.length; i++) {%>
-          <option value = "<%=realtors[i]._id%>"><%=realtors[i].name%></option>
+        <% for(let i = 0; i < realtor.length; i++) {%>
+          <option value = "<%=realtor[i]._id%>"><%=realtor[i].name%></option>
         <%}%>
       <input type="text" name="list" placeholder="House Listing"/>
       <input type = "text" name ="address" placeholder = "Street Name, Zip, State"/>
