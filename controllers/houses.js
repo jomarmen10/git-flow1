@@ -57,10 +57,10 @@ router.get("/:id/edit", async (req, res) => {
 });
 router.put("/:id", async (req, res) => {
   try {
-    const foundHouse = await House.findById(req.params.id, req.body, {
+    const foundHouse = await House.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     });
-    res.redirect("/houses", {});
+    res.redirect("/houses");
   } catch (error) {
     res.send(error);
   }

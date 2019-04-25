@@ -125,7 +125,6 @@ router.put("/:id", async (req, res) => {
         new: true
       }
     );
-
     res.redirect("/realtor");
   } catch (err) {
     res.send(err);
