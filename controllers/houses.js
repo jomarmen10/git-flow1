@@ -16,9 +16,9 @@ router.get('/new', async(req,res) => {
 });
 ////////////////////////////////////////////////
 //index route get route and post Working
-router.get('/', async(req,res) => {
+router.get('/', async(req,res) =>{
   try {
-    const foundHouses = await House.find();
+    const foundHouses = await House.find({});
     res.render('houses/index.ejs', {
       houses: foundHouses
     });
@@ -26,20 +26,6 @@ router.get('/', async(req,res) => {
     res.send(error);
   }
 });
-<<<<<<< HEAD
-/////////////////////////////////////////////// Working
-
-router.post("/", async (req, res) => {
-  try {
-    console.log(req.body);
-    const createList = await House.create(req.body);
-    res.redirect("/houses");
-  } catch (err) {
-    res.send(err);
-  }
-});
-=======
->>>>>>> master
 
 
 router.post('/', async(req, res)=>{
@@ -54,7 +40,7 @@ router.post('/', async(req, res)=>{
   }
 })
 
-//show route
+show route
 router.get('/:id', async(req,res) => {
     try{
     const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}})
@@ -64,7 +50,19 @@ router.get('/:id', async(req,res) => {
     });
     }catch(error){
         res.send(error);
-    
+    }
+});
+
+router.get('/:id', async(req,res) => {
+  try{
+    const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}});
+    res.render('houses/show.ejs', {
+      houses: foundHouse[0],
+      realtor: foundHouse
+    })
+  }catch(err){
+    res.send(err);
+  }
 });
 
 //Edit route get and put req
@@ -98,10 +96,6 @@ router.delete('/:id', async(req,res) => {
     await foundRealtor.save();
     res.redirect('/houses');
   }catch(error){
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     res.send(error);
   }
 });
