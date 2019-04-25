@@ -31,7 +31,6 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const showRealtors = await Realtor.findById(req.params.id).populate('houses')
-
     res.render("realtors/show.ejs", {
       realtor: showRealtors
     });
@@ -43,13 +42,12 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const deletedRealtor = await Realtor.findByIdAndRemove(req.params.id);
-    // const deleteHouse = await Article.deleteMany({_id:{$in:deleteHouse.houses}})
+    const deleteHouse = await House.deleteMany({_id:{$in:deletedRealtor.houses}})
     res.redirect("/realtor");
   } catch (err) {
     res.send(err);
   }
 });
-
 
 router.get("/:id/edit", async (req, res) => {
   try {
