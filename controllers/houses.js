@@ -18,7 +18,7 @@ router.get('/new', async(req,res) => {
 //index route get route and post Working
 router.get('/', async(req,res) => {
   try {
-    const foundHouses = await House.find({});
+    const foundHouses = await House.find();
     res.render('houses/index.ejs', {
       houses: foundHouses
     });
@@ -49,16 +49,6 @@ router.post('/', async(req, res)=>{
   }catch(err){
     res.send(err)
   }
-  //   router.post('/', async(req, res)=>{
-  // try{
-  //   const createArticle = await Article.create(req.body);
-  //   const findAuthor = await Author.findById(req.body.authorId);
-  //   await findAuthor.articles.push(createArticle);
-  //   await findAuthor.save()
-  //   res.redirect('/articles')
-  // }catch(err){
-  //   res.send(err)
-  // }
 })
 
 //show route
@@ -69,10 +59,9 @@ router.get('/:id', async(req,res) => {
       house: foundHouse.houses[0],
       realtor: foundHouse,
     });
-
     }catch(error){
-        res.send(error);``
-    }
+        res.send(error);
+    
 });
 
 //Edit route get and put req
