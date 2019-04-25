@@ -8,14 +8,22 @@
       <a href="#"><h1>Home</h1></a>
     </header>
     <main>
-      <h1>realtor show route In</h1>
+      realtor show route In
 
-      <h1> <%=realtor.name%><br/></h1>
-
+      <h1>Realtor: <%=realtor.name%><br/></h1>
+<section>
+      <h2>Other House Listing By <%=realtor.name%></h2>
+        <ul>
+          <% for (let i = 0; i < realtor.houses.length; i++) {%>
+              <li><a href="/houses/<%=realtor.houses[i]._id%>"><%=realtor.houses[i].list%></a></li>
+          <% } %>
+        </ul>
+</section>
+    <section>
       <form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
         <button type="submit">DELETE</button>
       </form>
-
+    </section>
       <a href="/realtor/<%=realtor._id%>/edit"> <button>Edit</button> </a>
     </main>
   </body>

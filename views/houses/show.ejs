@@ -8,10 +8,11 @@
       <a href="/houses"><h1>Home</h1></a>
     </header>
     <main>
-      <h1>House show route In</h1>
+      House show route In
 
       <section>
          <h1><%=house.list%></h1>
+          <h2>Realtor Profile and other listings by: <a href="/realtor/<%=realtor._id%>"><%=realtor.name%></a></h2>
       </section>
 
       <section>
@@ -19,10 +20,10 @@
       </section>
 
       <section>
-        <h2>Address:<%=house.address%><br/>
+        <h3>Address:<%=house.address%><br/>
           $<%=house.price%><br/>
           Type:<%=house.type%><br/>
-          Number of Rooms:<%=house.rooms%><br/></h2>
+          Number of Rooms:<%=house.rooms%><br/></h3>
       </section>
 
       <section>

@@ -10,7 +10,7 @@
     <main>
       <h1>List of Realtors index page</h1>
       <% for (let i=0; i<realtor.length; i++){%>
-        <a href="/realtor/<%=realtor[i]._id%>"><h2><%=realtor[i].name%></h2></a>
+        <a href="/realtor/<%=realtor.houses[i]._id%>"><h2><%=realtor.houses[i].list%></h2></a>
       <%}%>
     </main>
   </body>
