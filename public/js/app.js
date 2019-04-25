@@ -1,11 +1,22 @@
-console.log('hello');
+const House = require('../../models/houses')
+const Realtor = require('../../models/realtors')
 
 
-const price = [
-  "100k", "200k", "300k"
+let price = [
+  {
+    "100k":100000
+  },
+  {
+    "200k":200000
+  }
 ]
-// <option>
-//   price.map(p => {
-//     return <select><%= p %></select>
-//   })
-// <option>
+
+
+const getPrice = ()=>{
+
+}
+
+
+console.log(price[0]['100k'])
+
+console.log(Realtor.name)
