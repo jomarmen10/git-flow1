@@ -1,126 +1,124 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const House = require ('../models/houses');
 const Realtor = require ('../models/realtors'); //replace Realtor/ allRealtors
 
 //new route
 router.get('/new', async(req,res) => {
-    try{
-      const allRealtors = await Realtor.find({});
-      res.render ('houses/new.ejs' ,{
-          realtor:allRealtors
-      });
-    }catch(error){
-        res.send(errorr);
-    }
+  try{
+    const foundRealtor = await Realtor.find({});
+    res.render('houses/new.ejs',{
+      realtors: foundRealtor
+    })
+  }catch(err){
+    res.sedn(err)
+  }
 });
 ////////////////////////////////////////////////
-
 //index route get route and post Working
 router.get('/', async(req,res) => {
-    try{
-        const foundHouses = await House.find({});
-        res.render('houses/index.ejs', {
-         houses: foundHouses
-            });
-    }catch(error){
-            res.send(error);
-        }
+  try {
+    const foundHouses = await House.find({});
+    res.render('houses/index.ejs', {
+      houses: foundHouses
+    });
+  }catch(error){
+    res.send(error);
+  }
 });
 /////////////////////////////////////////////// Working
 
-router.post('/', (req, res)=>{
-    House.create(req.body, (err, createdHouse)=>{
-      if(err){
-        res.send(err);
-      } else {
-        Realtor.findById(req.body.realtorId, (err, foundRealtor) => {
-          console.log("===========================")
-          console.log(foundRealtor, "<===found  foundRealtor in House Index Post");
-          console.log("===========================")
-          foundRealtor.houses.push(createdHouse);
-          foundRealtor.save((err, savedRealtor) => {
-            console.log('============================')
-            console.log(savedRealtor, ' <---------- found savedRealtor in House Index post route');
-            console.log('============================')
-            res.redirect('/houses');
-          }); 
-        });  
-      }
-    });
-  });
-////////////////////////////////////////////////////////
-//show route
-//house show does render but dont see listed items again :(
-router.get('/:id', (req, res)=>{
-    Realtor.findOne({'houses': req.params.id})
-        .populate({path: 'houses', match: {_id: req.params.id}})
-        .exec((err, foundRealtor) => {
-        console.log(foundRealtor, "<---- foundRealtor in Houses show route");
-        res.render('houses/show.ejs', {
-            realtor:foundRealtor,
-            house:foundRealtor.houses[0]
-            })
-          })     
-      });
-
-/////Edit route get and put req//////////////////////////
-
-router.get('/:id/edit', (req, res)=>{
-  //  Realtor.find({}, (err, allRealtors) => {
-     Realtor.findOne({'houses': req.params.id})
-       .populate({path: 'houses', match: {_id: req.params.id}})
-       .exec((err, foundHouseRealtor) => {
-         console.log(foundHouseRealtor, "<==== foundHouseRealtor in edit get route")
-         if(err){
-           res.send(err);
-         } else {
-           res.render('houses/edit.ejs', {
-             house: foundHouseRealtor.houses[0],
-             realtor: foundHouseRealtor,
-             houseRealtor: foundHouseRealtor
-           })
-         }
-      //  })
- 
-   })
- });
- router.put('/:id', (req, res)=>{
-     House.findByIdAndUpdate(req.params.id, req.body, {new: true},(err, updatedHouse)=>{
-       Realtor.findOne({'houses': req.params.id}, (err, foundRealtor) => {
-         if(foundRealtor._id.toString() !== req.body.realtorId){
-           foundRealtor.houses.remove(req.params.id);
-           foundRealtor.save((err, savedFoundRealtor) => {
-             Realtor.findById(req.body.realtorId, (err, newRealtor) => {
-               newRealtor.houses.push(updatedHouse);
-               newRealtor.save((err, savedNewRealtor) => {
-                 res.redirect('/houses/' + req.params.id);
-               })
-             })
-        })
-         } else {
-           res.redirect('/houses/' + req.params.id)
-         }
-        })
-    });
+router.post("/", async (req, res) => {
+  try {
+    console.log(req.body);
+    const createList = await House.create(req.body);
+    res.redirect("/houses");
+  } catch (err) {
+    res.send(err);
+  }
 });
-//delete route
-router.delete('/:id', (req, res)=>{
-    House.findByIdAndRemove(req.params.id, (err, deletedHouse)=>{
-      Realtor.findOne({'houses': req.params.id}, (err, foundRealtor) => {
-        if(err){
-          res.send(err);
-        } else {
-          console.log(foundRealtor, "<---- foundRealtor in delete before  remove house id")
-          foundRealtor.houses.remove(req.params.id);
-          foundRealtor.save((err, updatedRealtor) => {
-            console.log(updatedRealtor, 'mutation');
-            res.redirect('/houses');
-          });
-        }
-      });
+
+
+router.post('/', async(req, res)=>{
+  try{
+    const createList = await House.create(req.body);
+    const findRealtor = await Realtor.findById(req.body.realtorId);
+    await findRealtor.houses.push(createList);
+    await findRealtor.save();
+    res.redirect('/houses')
+  }catch(err){
+    res.send(err)
+  }
+  //   router.post('/', async(req, res)=>{
+  // try{
+  //   const createArticle = await Article.create(req.body);
+  //   const findAuthor = await Author.findById(req.body.authorId);
+  //   await findAuthor.articles.push(createArticle);
+  //   await findAuthor.save()
+  //   res.redirect('/articles')
+  // }catch(err){
+  //   res.send(err)
+  // }
+})
+
+//show route
+router.get('/:id', async(req,res) => {
+    try{
+    const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}})
+    res.render('houses/show.ejs', {
+      house: foundHouse.houses[0],
+      realtor: foundHouse,
     });
-  });
+
+    }catch(error){
+        res.send(error);``
+    }
+});
+
+//Edit route get and put req
+router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
+    try{
+      const foundOne = await Realtor.findOne({'houses':req.params.id}).populate({path: 'houses', match: {_id: req.params.id}})
+      res.render('houses/edit.ejs', {
+        house: foundOne.houses[0],
+        realtor: foundOne
+      });
+    }catch(error){
+        res.send(error);
+    }
+});
+router.put('/:id', async(req, res)=> {
+  try{
+    const foundHouse = await House.findByIdAndUpdate(req.params.id,req.body,{new:true});
+    res.redirect('/houses')
+  }catch(error){
+    res.send(error);
+  }
+});
+
+
+//delete route
+router.delete('/:id', async(req,res) => {
+  try{
+    const deletedHouse = await House.findByIdAndRemove(req.params.id);
+    const foundRealtor = await Realtor.findOne({'houses': req.params.id});
+    await foundRealtor.houses.remove(req.params.id);
+    await foundRealtor.save();
+    res.redirect('/houses');
+  }catch(error){
+    res.send(error);
+  }
+});
+
+// router.delete('/:id', async(req, res)=>{
+//   try{
+//     const deleteArticle = await Article.findByIdAndRemove(req.params.id);
+//     const foundAuthor = await Author.findOne({'articles': req.params.id});
+//     await foundAuthor.articles.remove(req.params.id);
+//     await foundAuthor.save();
+//   }catch(err){
+//     res.send(err)
+//   }
 
 //added
 module.exports = router;

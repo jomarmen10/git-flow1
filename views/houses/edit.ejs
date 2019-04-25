@@ -9,19 +9,19 @@
     </header>
     <main>
       <h1>House Edit route In</h1>
-      <p><%= realtor.name %></p>
-
+      <h1>Realtor: <%=realtor.name%></h1>
       <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
-        <input type="text" name="list" value = "<%=house.list%> " placeholder="House Listing"/><br/>
-        <input type = "text" name = "img" value = "<%=house.img%> " placeholder ="photo url here"/><br/>
-        <input type = "text" name = "address" value = "<%=house.address%> " placeholder ="Street Name, Zip, State"/><br/>
-        <input type = "text" name = "price" value = "<%=house.price%> " placeholder ="Price Range"/><br/>
-        <input type = "text" name = "type" value = "<%=house.type%> " placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
-        <input type = "text" name = "rooms" value  ="<%=house.rooms%>" placeholder = "Number of Rooms"/>
+        <input type="text" name="list" value="<%=house.list%>" placeholder="House Listing"/><br/>
+        <input type ="text" name ="img" value="<%=house.img%>" placeholder ="photo url here"/><br/>
+        <input type ="text" name ="address" value="<%=house.address%>" placeholder ="Street Name, Zip, State"/><br/>
+        <input type ="text" name ="price" value="<%=house.price%>" placeholder ="Price Range"/><br/>
+        <input type ="text" name ="type" value="<%=house.type%>" placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
+        <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
         <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
-        <button type="submit">Edit House Listing</button>
-    </form>
-
+        <button type="submit">UPDATE</button>
+      </form>
+      <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
+      <input type = "submit" value = "DELETE HOUSE"/>
     </main>
   </body>
 </html>
