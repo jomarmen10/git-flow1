@@ -56,7 +56,8 @@ router.get("/:id/edit", async (req, res) => {
   try {
     const foundRealtor = await Realtor.findById(req.params.id);
     res.render("realtors/edit.ejs", {
-      realtor: foundRealtor
+      realtor: foundRealtor,
+      id: req.params.id
     });
   } catch (err) {
     res.send(err);

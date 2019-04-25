@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script defer type="text/javascript" src="/js/app.js"></script>
     <title></title>
     <script defer type="text/javascript" src= "/js/map.js">
       
@@ -15,9 +16,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   </head>
   <body>
-    <header>
+    <header class='house-index'>
       <a href="/houses"><h1>Home</h1></a>
       <h1> Houses Index</h1>
+
     </header>
     <main>
         <h2> List of Houses</h2>
@@ -33,21 +35,42 @@
       <h2>enter location</h2>
       <form id="location-form">
         <input id="location-input" type="text">
-        <button type="submit">Submit</button>
-      </form>
+      <select name="price">
+        <% for (let i = 0; i < houses.length; i++) { %>
+        <option value="<%=houses[i]._id%>"><%=houses[i].price%></option>
+        <%}%>
+      </select>
+      <select name="location">Radius Search</select>
+      <select name="rooms">Bed/Room</select>
+      <select name="type">Type</select>
+      <button type="submit">Submit</button>
+
+    </form>
+
+    </header>
+      <main>
+      <h2> List of Houses</h2>
+      <ul>
+        <%for(let i = 0; i < houses.length; i++) {%>
+          <a href="/houses/<%=houses[i]._id%>"> <li> <%=houses[i].list%></li> </a>
+        <%}%>
+      </ul>
+
 
       <div id="formatted-address"></div>
-        <div id="address-components"></div>
-                <div id="geometry"></div>
+      <div id="address-components"></div>
+      <div id="geometry"></div>
+
 
 <div id="map">
     </div>
 
 
+
  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
-    </script>  
-      
+    </script>
+
     </main>
   </body>
 </html>
