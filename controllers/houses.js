@@ -67,7 +67,7 @@ router.get('/:id', (req, res)=>{
 /////Edit route get and put req//////////////////////////
 
 router.get('/:id/edit', (req, res)=>{
-   Realtor.find({}, (err, allRealtors) => {
+  //  Realtor.find({}, (err, allRealtors) => {
      Realtor.findOne({'houses': req.params.id})
        .populate({path: 'houses', match: {_id: req.params.id}})
        .exec((err, foundHouseRealtor) => {
@@ -77,11 +77,11 @@ router.get('/:id/edit', (req, res)=>{
          } else {
            res.render('houses/edit.ejs', {
              house: foundHouseRealtor.houses[0],
-             realtor: allRealtors,
+             realtor: foundHouseRealtor,
              houseRealtor: foundHouseRealtor
            })
          }
-       })
+      //  })
  
    })
  });

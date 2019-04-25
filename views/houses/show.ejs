@@ -8,35 +8,26 @@
       <a href="/houses"><h1>Home</h1></a>
     </header>
     <main>
-      House show route In
+      <h1>House show route In</h1>
 
       <section>
          <h1><%=house.list%></h1>
-          <h2>Realtor Profile and other listings by: <a href="/realtor/<%=realtor._id%>"><%=realtor.name%></a></h2>
-      </section>
-
-      <section>
           <img src = "<%=house.img%>">
-      </section>
+              <h2>Address:<%=house.address%><br/>
+               $<%=house.price%><br/>
+                Type:<%=house.type%><br/>
+                Number of Rooms:<%=house.rooms%><br/>
+              </h2>
 
-      <section>
-        <h3>Address:<%=house.address%><br/>
-          $<%=house.price%><br/>
-          Type:<%=house.type%><br/>
-          Number of Rooms:<%=house.rooms%><br/></h3>
-      </section>
-
-      <section>
-          <p><%=house.body%></p>
-      </section>
-
-      <section>
-              
-                   
-          <a href = "/houses/<%=house._id%>/edit">Edit</a>
+                   <p> <%=house.body%></p>
+              <section>
+               
+              </section>
+         <a href = "/houses/<%=house._id%>/edit">Edit</a>
           <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
           <input type = "submit" value = "Delete House"/>
         </section>
+      <a href='/realtor/<%= realtor._id%>'><%=realtor.name%>
     </main>
   </body>
 </html>

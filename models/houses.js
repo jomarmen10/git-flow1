@@ -7,7 +7,7 @@ const houseSchema = mongoose.Schema ({
     address: String,
     price: String,
     type: String,
-    rooms: Number,
+    rooms: String,
 });
 
 const House = mongoose.model('House', houseSchema);
