@@ -6,6 +6,7 @@
     <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
 
     <title></title>
     <style>
@@ -24,17 +25,17 @@
     </header>
     <main>
       <h2> List of Houses</h2>
-      <ul>
+      <ul id="list-of-houses">
         <%for(let i = 0; i < houses.length; i++) {%>
           <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>" data-img="<%=houses[i].img%>"> <%=houses[i].list%>
           </li> </a>
         <%}%>
       </ul>
-      <h1> <%=houses[1].address%></h1>
       <h1>google map</h1>
       <h2>enter location</h2>
+      <input id="location-input" type="text">
       <form id="location-form">
-        <input id="location-input" type="text">
+        <input type="text">
         <select name="price">
           <% for (let i = 0; i < houses.length; i++) { %>
             <option value="<%=houses[i]._id%>"><%=houses[i].price%></option>
