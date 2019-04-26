@@ -11,8 +11,17 @@
     <title></title>
     <style>
     #map{
-      height: 500px;
+      height: 400px;
+      width : 400px
+    
     }
+    #imgMap{
+      height: 50px;
+      width: auto;
+    }
+    
+
+    
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -27,24 +36,39 @@
       <h2> List of Houses</h2>
       <ul id="list-of-houses">
         <%for(let i = 0; i < houses.length; i++) {%>
-          <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>" data-img="<%=houses[i].img%>"> <%=houses[i].list%>
+          <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>" data-price="<%=houses[i].price%>" data-img="<%=houses[i].img%>"> <%=houses[i].list%>
           </li> </a>
         <%}%>
       </ul>
+
       <h1>google map</h1>
       <h2>enter location</h2>
       <input id="location-input" type="text">
       <form id="location-form">
         <input type="text">
+
+      
+<form id="location-form">
+<select name="price">
+<input id="location-input" type="text" placeholder="enter address">
+
         <select name="price">
-          <% for (let i = 0; i < houses.length; i++) { %>
-            <option value="<%=houses[i]._id%>"><%=houses[i].price%></option>
-          <%}%>
+          <option value="">less than</option>
+            <option value="500">500</option>
+        <option value="1000">1000</option>
+    <option value="2000">2000</option>
+    
+
+
+         
         </select>
+
+        
         <select name="location">Radius Search</select>
         <select name="rooms">Bed/Room</select>
         <select name="type">Type</select>
         <button type="submit">Submit</button>
+        <input  id="textPrice" type="text" placeholder="less than">
       </form>
     <main>
 
