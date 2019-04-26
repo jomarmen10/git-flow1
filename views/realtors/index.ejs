@@ -6,28 +6,18 @@
   <body>
     <header>
       <a href="/houses"><h1>Home</h1></a>
+       <a href="/houses/new"><h1>Add New Listing</h1></a>
+        <a href="/realtor/edit"><h1>Edit your page</h1></a>
 
-    <h2>Realtor Login Portal</h2>
-    <form action="/auth/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit">Login</button>
-  </form>
-  
-
-
-  <a href="/auth/login"><h1>Register</h1></a>
-  <form action="/auth/register" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit">Register</button>
-  </form>
         
     </header>
     <main>
-      <h1>List of Realtors index page</h1>
+      <h1> Realtor Profile page</h1>
       <% for (let i=0; i<realtor.length; i++){%>
-        <a href="/realtor/<%=realtor[i]._id%>"><h2><%=realtor[i].name%></h2></a>
+        <a href="/realtor/<%=realtor[i]._id%>">
+        <%=realtor[i].name%>
+        <%=realtor[i].email%>
+        </a>
       <%}%>
     </main>
   </body>

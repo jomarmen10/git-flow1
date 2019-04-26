@@ -10,7 +10,7 @@ const realtorsController = require("./controllers/realtors");
 const authController = require("./controllers/authController");
 require("./db/db.js");
 
-//const session = require('express-session');
+// const session = require('express-session');
 
 //require('dotenv').config()
 //require modules here
@@ -32,6 +32,10 @@ app.use(session({
 //   resave: false,
 //   saveUninitialized: false,
 // }));
+
+////////
+
+////////
 
 app.use("/realtor", realtorsController);
 

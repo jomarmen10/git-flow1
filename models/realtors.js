@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const House = require('./houses');
 
 const realtorsSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true },
+  name:{type: String},
+  password: {type: String, require:true },
+  email:{ type: String},
   houses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'House'

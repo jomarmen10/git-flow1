@@ -1,100 +1,87 @@
 const express = require('express');
 const router = express.Router();
-const User   = require('../models/users');
+const Realtor = require("../models/realtors");
+const House = require ('../models/houses');
 const bcrypt = require('bcryptjs');
+let user = null;
 
-
-router.get('/login', (req, res) => {
-  res.render('login.ejs', {
-    message: req.session.message
-  })
+router.get('/login', (req, res, next) => {
+  res.render('login.ejs',
+   { message: req.session.message})
 });
 
 
 
 router.post('/register', async (req, res) => {
-
-  
   const password = req.body.password;
   console.log("password", req.body.password)
   console.log("username",req.body.username)
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-
-
-  const userDbEntry = {};
-  userDbEntry.username = req.body.username;
-  userDbEntry.password = passwordHash;
-
+  const realtorDbEntry = {};
+  realtorDbEntry.username = req.body.username;
+  realtorDbEntry.password = passwordHash;
   try {
-    const createdUser = await User.create(userDbEntry);
-
- 
+    const createdRealtor = await Realtor.create(realtorDbEntry);
+    console.log("realtor created")
     req.session.logged = true;
-    req.session.usersDbId = createdUser._id;
-
-    res.redirect('/houses');
+    req.session.realtorDbId = createdRealtor._id;
+    console.log("redirecting..")
+    res.redirect('/houses/new');
 
   } catch(err){
     res.send(err)
   }
-
-
-
 });
 
 
 
-router.post('/login', async (req, res) => {
 
- 
+
+
+router.post('/login', async (req, res) => { 
   try {
-    const foundUser = await User.findOne({'username': req.body.username});
-
- 
-    if(foundUser){
-
-     
-      if(bcrypt.compareSync(req.body.password, foundUser.password) === true){
-       
-        res.session.message = '';
+    const foundRealtor = await Realtor.findOne({'username': req.body.username});
+    console.log(foundRealtor)
+    // const foundRealtorPassword = Realtor.password.findOne({passwordHash:req.body.password})
+    if(foundRealtor){  
+      console.log("comparing password") 
+      if(bcrypt.compareSync(req.body.password, foundRealtor.password)){  
+        console.log("password is valid")   
+        req.session.message = 'You sucessfully logged in';
         req.session.logged = true;
-        req.session.usersDbId = foundUser._id;
+        req.session.realtorDbId = foundRealtor._id;
 
         console.log(req.session, ' successful in login')
-        res.redirect('/houses');  //house index
+        res.redirect('/realtor/new');  //house index
 
       } else {
-     console.log(foundUser.password)
-     console.log(req.body.password)
+        console.log(foundRealtor.password)
+        console.log(req.body.password)
         req.session.message = "Username or password is incorrect";
-        res.redirect('/auth/login');
+        res.redirect('/houses');
       }
-
-    } else {
-2
+    } else{
       req.session.message = 'Username or Password is incorrect';
-
-      res.redirect('/auth/login');
+      res.redirect('/houses');
     }
-
-
   } catch(err){
     res.send(err);
+    console.log('login didnt hit')
   }
-
-
-
-
 
 });
 
 
+
+/////////Working ok//////
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if(err){
       res.send(err);
     } else {
       res.redirect('/auth/login');
+      //req.session.message;
+
     }
   })
 })

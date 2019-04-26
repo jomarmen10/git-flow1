@@ -33,10 +33,13 @@ router.get('/', async (req, res) => {
 
 router.post('/', async(req, res)=>{
   try{
+ 
+    const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
-    const findRealtor = await Realtor.findById(req.body.realtorId);
-    await findRealtor.houses.push(createList);
-    await findRealtor.save();
+    console.log(findRealtor)
+    findRealtor.houses.push(createList);
+    findRealtor.save();
+    console.log("house pushed and realtor saved")
     res.redirect('/houses')
   }catch(err){
     res.send(err)

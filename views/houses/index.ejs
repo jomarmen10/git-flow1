@@ -25,14 +25,14 @@
                      <form action = "/auth/login" method = "POST">
                        <input type = "text" name = "username" placeholder = "username">
                         <input type = "password" name = "password" placeholder = "password">
-                          <button type="submit">Login</button>
+                          <a href = "/houses/new"><button type="submit">Login</button></a>
             </form>
-                                 <%= message %>
+                              <small>  <%=message%></small>
           </section>
 
           <section>
           <li>
-            <a href="/auth/logout">Logout</a>
+            <a href="/auth/login">Logout</a>
           </li></section>
 
     

@@ -12,7 +12,10 @@
       <h1><%=realtor.name%></h1>
 
       <form action="/realtor/<%=realtor._id%>?_method=PUT" method="POST">
-      <input type="text" name="name" value="<%=realtor.name%>"/>
+      <input type="text" name="username" value="<%=realtor.username%>"/>
+      <input type = "text" name = "email" value = "<%=realtor.email%>"/>
+        <input type="text" name="name" value="<%=realtor.name%>"/>
+      <input type = "text" name = "houses" value = "<%=realtor.houses%>"/>
       <button type="submit">EDIT</button>
       </form>
     </main>
