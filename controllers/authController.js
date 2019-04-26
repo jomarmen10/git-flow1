@@ -14,8 +14,12 @@ router.get('/login', (req, res, next) => {
 
 router.post('/register', async (req, res) => {
   const password = req.body.password;
+  console.log('======pw======')
   console.log("password", req.body.password)
+  console.log('======pw======')
+  console.log('======username======')
   console.log("username",req.body.username)
+  console.log('======username======')
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const realtorDbEntry = {};
   realtorDbEntry.username = req.body.username;
@@ -26,7 +30,7 @@ router.post('/register', async (req, res) => {
     req.session.logged = true;
     req.session.realtorDbId = createdRealtor._id;
     console.log("redirecting..")
-    res.redirect('/houses/new');
+    res.redirect(`/realtor/${createdRealtor._id}`);
 
   } catch(err){
     res.send(err)
@@ -52,8 +56,10 @@ router.post('/login', async (req, res) => {
         req.session.realtorDbId = foundRealtor._id;
 
         console.log(req.session, ' successful in login')
-        res.redirect('/realtor/new');  //house index
-
+        res.redirect(`/realtor/${foundRealtor._id}`);  //house index
+      if(!foundRealtor){
+        
+      }
       } else {
         console.log(foundRealtor.password)
         console.log(req.body.password)
