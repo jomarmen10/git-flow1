@@ -12,34 +12,40 @@ router.get('/new', async(req,res) => {
       realtors: foundRealtor
     })
   }catch(err){
-    res.sedn(err)
+    res.send(err)
   }
 });
-
-//index route get route and post
-router.get('/', async(req,res) => {
-  try{
+////////////////////////////////////////////////
+// index route get route and post Working
+router.get('/', async (req, res) => {
+  try {
     const foundHouses = await House.find({});
     res.render('houses/index.ejs', {
-      houses: foundHouses
-    });
+      houses: foundHouses,
+      message: req.session.message
+    })
+    
   }catch(error){
     res.send(error);
   }
+
 });
 
 
 router.post('/', async(req, res)=>{
   try{
+ 
+    const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
-    const findRealtor = await Realtor.findById(req.body.realtorId);
-    await findRealtor.houses.push(createList);
-    await findRealtor.save();
+    console.log(findRealtor)
+    findRealtor.houses.push(createList);
+    findRealtor.save();
+    console.log("house pushed and realtor saved")
     res.redirect('/houses')
   }catch(err){
     res.send(err)
   }
-})
+});
 
 //show route
 router.get('/:id', async(req,res) => {
@@ -49,10 +55,21 @@ router.get('/:id', async(req,res) => {
       house: foundHouse.houses[0],
       realtor: foundHouse,
     });
-
     }catch(error){
-        res.send(error);``
+        res.send(error);
     }
+});
+
+router.get('/:id', async(req,res) => {
+  try{
+    const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}});
+    res.render('houses/show.ejs', {
+      houses: foundHouse[0],
+      realtor: foundHouse
+    })
+  }catch(err){
+    res.send(err);
+  }
 });
 
 //Edit route get and put req
@@ -67,6 +84,7 @@ router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
         res.send(error);
     }
 });
+
 router.put('/:id', async(req, res)=> {
   try{
     const foundHouse = await House.findByIdAndUpdate(req.params.id,req.body,{new:true});
@@ -86,7 +104,6 @@ router.delete('/:id', async(req,res) => {
     await foundRealtor.save();
     res.redirect('/houses');
   }catch(error){
-
     res.send(error);
   }
 });

@@ -5,9 +5,9 @@ const houseSchema = mongoose.Schema ({
     body: String,  //description
     img: [{type:String}],   //image
     address: String,
-    price: Number,
+    price: String,
     type: String,
-    rooms: Number,
+    rooms: String,
 });
 
 const House = mongoose.model('House', houseSchema);

@@ -29,8 +29,38 @@
   </head>
   <body>
     <header>
+           <section>
+               <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+           </section>
+           <section>
+                <h1> Login</h1>
+                     <form action = "/auth/login" method = "POST">
+                       <input type = "text" name = "username" placeholder = "username">
+                        <input type = "password" name = "password" placeholder = "password">
+                          <a href = "/houses/new"><button type="submit">Login</button></a>
+            </form>
+                              <small>  <%=message%></small>
+          </section>
+
+          <section>
+          <li>
+            <a href="/auth/login">Logout</a>
+          </li></section>
+
+    
+      <section>
+          <h1> Houses Index</h1>
+              <input type="text" name="searchbar" placeholder="Search Location, Zip, State"/>
+                       <button type = "submit">Search</button><br/>
+                         <select name="price">Price Range</select>
+                         <select name="location">Radius Search</select>
+                         <select name="rooms">Bed/Room</select>
+                         <select name="type">Type</select>
+        </section>
+
     <a href="/houses"><h1>Home</h1></a>
       <h1> Houses Index</h1>
+
     </header>
     <main>
       <h2> List of Houses</h2>

@@ -21,7 +21,9 @@
               </h2>
 
           <p> <%=house.body%></p>
-          <a href = "/houses/<%=house._id%>/edit">Edit</a>
+          <%if (isAdmin){%>
+            <a href = "/houses/<%=house._id%>/edit">Edit</a>
+          <%}%>
 
         </section>
 

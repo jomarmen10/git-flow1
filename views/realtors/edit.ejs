@@ -5,13 +5,17 @@
   </head>
   <body>
     <header>
-      <a href="/houses"><h1>Home</h1></a>
+      <a href="/"><h1>Home</h1></a>
     </header>
     <main>
-      <h1>realtor Edit route In</h1>
+      REALTOR PROFILE
+      <h1><%=realtor.name%></h1>
 
       <form action="/realtor/<%=realtor._id%>?_method=PUT" method="POST">
-      <input type="text" name="name" value="<%=realtor.name%>"/>
+      <input type="text" name="username" value="<%=realtor.username%>"/>
+      <input type = "text" name = "email" value = "<%=realtor.email%>"/>
+        <input type="text" name="name" value="<%=realtor.name%>"/>
+      <input type = "text" name = "houses" value = "<%=realtor.houses%>"/>
       <button type="submit">EDIT</button>
       </form>
     </main>
