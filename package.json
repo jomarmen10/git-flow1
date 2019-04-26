@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/jomarmen10/git-flow1#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-session": "^1.16.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.5.3"
   }
