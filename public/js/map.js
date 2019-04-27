@@ -243,11 +243,12 @@ function displayHousesP(func) {
 
           //console.log(latitude);
           // console.log(long);
-          // console.log(houses[0].attributes["2"].value);
+
+          console.log(houses[0].attributes["2"].value);
           func({
             coords: { lat: latitude, lng: long },
             content: `<h1>${houses[i].innerText}</h1> <img id="imgMap" src='${
-              houses[0].attributes["2"].value
+              houses[i].attributes["2"].value
             }'>`
           });
         })
