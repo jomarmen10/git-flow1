@@ -31,19 +31,22 @@
                 Number of Rooms:<%=house.rooms%><br/>
               </h2>
 
-          <p> <%=house.body%></p>
-        
-          <%if (realtor && realtor.isAdmin){%>
+          <p><%=house.body%></p>
+
+          <%if (realtor.isAdmin){%>
             <a href = "/houses/<%=house._id%>/edit">Edit</a>
           <%}%>
 
         </section>
 
+<<<<<<< HEAD
  <h1>map</h1>
         <div id="map"></div>
        
       
 
+=======
+>>>>>>> master
     </main>
 <script>
 let lat;
