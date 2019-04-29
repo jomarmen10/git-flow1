@@ -27,7 +27,8 @@ router.get('/', async (req, res) => {
       houses: foundHouses,
       message: req.session.message
     })
-  } catch (error) {
+
+  }catch(error){
     res.send(error);
   }
 });
@@ -37,8 +38,8 @@ router.get('/', async (req, res) => {
 // })
 
 
-router.post('/', async (req, res) => {
-  try {
+router.post('/', async(req, res)=>{
+  try{
 
     const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);

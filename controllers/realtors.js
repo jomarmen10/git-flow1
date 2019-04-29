@@ -44,7 +44,9 @@ router.delete("/:id", async (req, res) => {
   try {
     const deletedRealtor = await Realtor.findByIdAndRemove(req.params.id);
     const deleteHouse = await House.deleteMany({
-      _id: { $in: deletedRealtor.houses }
+      _id: {
+        $in: deletedRealtor.houses
+      }
     });
     res.redirect("/realtor");
   } catch (err) {
@@ -68,8 +70,7 @@ router.put("/:id", async (req, res) => {
   try {
     const updatedRealtors = await Realtor.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      {
+      req.body, {
         new: true
       }
     );
