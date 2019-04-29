@@ -8,12 +8,22 @@
       <a href="#"><h1>Home</h1></a>
     </header>
     <main>
+      
+        <% if (realtor.isAdmin) { %> 
+          <p>i am admin </p>
+       <% } else { %> 
+            <p>i am not admin </p>
+       <%}%></p>
       <h1>realtor show route In</h1>
       <h1> <%=realtor.name%><br/></h1>
       <form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
         <button type="submit">DELETE</button>
       </form>
-      <a href="/realtor/<%=realtor._id%>/edit"> <button>Edit</button> </a>
+       <%if(realtor.isAdmin){%>
+        <a href="/realtor/<%=realtor._id%>/edit"> <button >Edit</button> </a>
+      <%}%>
+
+
       <section>
       <h2>House for sale</h2>
         <ul>

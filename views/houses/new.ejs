@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="stylesheet" href="/css/New_house.css">
     <title></title>
   </head>
   <body>
@@ -8,14 +9,10 @@
       <a href="/houses"><h1>Home</h1></a>
     </header>
     <main>
-      <h1><%=realtors.name%></h1>
+      <h1><%=realtors.username%></h1>
       <h1>House new route In</h1>
-      <form action='/houses' method="post">
-        <select name="realtorId">
-          <% for (let i = 0; i < realtors.length; i++) { %>
-          <option value="<%=realtors[i]._id%>"><%=realtors[i].name%></option>
-          <%}%>
-        </select><br/>
+      <form action='/houses' method="POST">
+
         <input type="text" name="list" placeholder="House Listing"/>
         <input type = "zip" name ="address" placeholder = "Street Name, Zip, State"/>
         <input type = "number" name = "price" placeholder = " Price Range"/><br/>

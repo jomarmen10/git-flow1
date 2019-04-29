@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const houseSchema = mongoose.Schema ({
     list: String,   //name of listing
     body: String,  //description
-    img: String,   //image
+    img: [{type:String}],   //image
     address: String,
-    price: Number,
+    price: String,
     type: String,
-    rooms: Number,
+    rooms: String,
 });
 
 const House = mongoose.model('House', houseSchema);
