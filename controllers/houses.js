@@ -4,7 +4,6 @@ const router = express.Router();
 const House = require('../models/houses');
 const Realtor = require('../models/realtors'); //replace Realtor/ allRealtors
 
-
 //new route
 router.get('/new', async (req, res) => {
   try {
@@ -16,7 +15,7 @@ router.get('/new', async (req, res) => {
     res.send(err)
   }
 });
-////////////////////////////////////////////////
+///////////////////////////////////////////////
 // index route get route and post Working
 router.get('/', async (req, res) => {
   try {
@@ -28,7 +27,7 @@ router.get('/', async (req, res) => {
       message: req.session.message
     })
 
-  }catch(error){
+  } catch (error) {
     res.send(error);
   }
 });
@@ -38,8 +37,8 @@ router.get('/', async (req, res) => {
 // })
 
 
-router.post('/', async(req, res)=>{
-  try{
+router.post('/', async (req, res) => {
+  try {
 
     const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
