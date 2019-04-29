@@ -9,39 +9,31 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
             <title></title>
-    <style>
-    #map{
-      height: 400px;
-      width : 400px
-    }
-    #imgMap{
-      height: 50px;
-      width: auto;
-    }
-    </style>
-    
-    
-    </head>
-    <body>
-      <header>
-        <section>
-          <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
-        </section>
-        <section>
-          <h1> Login</h1>
-          <form action="/auth/login" method="POST">
-            <input type="text" name="username" placeholder="username">
-            <input type="password" name="password" placeholder="password">
-            <a href="/houses/new"><button type="submit">Login</button></a>
-          </form>
-          <small> <%=message%></small>
-        </section>
+  </head>
+      <body>
+        <header>
+            <section>
+                <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+            </section>
 
-        <section>
-          <li>
-            <a href="/auth/login">Logout</a>
-          </li>
-        </section>
+            <section>
+                <h1> Login</h1>
+                    <form action="/auth/login" method="POST">
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password">
+                          <a href="/houses/new"><button type="submit">Login</button></a>
+                    </form>
+                              <small> <%=message%></small>
+            </section>
+
+            <section>
+                  <li>
+                      <a href="/auth/login">Logout</a>
+                  </li>
+            </section>
+
+
+
     <a href="/houses"><h1>Home</h1></a>
     <a href="/realtor">realtor</a>
     </header>
@@ -49,7 +41,7 @@
       <h2> </h2>
       <ul id="list-of-houses">
         <%for(let i = 0; i < houses.length; i++) {%>
-          <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>"  data-img="<%=houses[i].img%>"   data-price="<%=houses[i].price%>"   data-rooms="<%=houses[i].rooms%>" data-type="<%=houses[i].type%>" > <%=houses[i].list%>
+          <a href="/houses/<%=houses[i]._id%>"><img src =  <li class="house" data-add="<%=houses[i].address%>"  data-img="<%=houses[i].img%>"   data-price="<%=houses[i].price%>"   data-rooms="<%=houses[i].rooms%>" data-type="<%=houses[i].type%>" > <%=houses[i].list%>
           </li> </a>
         <%}%>
       </ul>
