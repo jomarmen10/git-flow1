@@ -46,39 +46,49 @@
 
     </main>
 <script>
-let lat = 34.0522;
-let lng = -118.2437;
- function initMap(){
-       function geocode(){
-  console.log(document.getElementById('address').innerHTML);
-  let location =document.getElementById('address').innerHTML;
-  axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+let lat;
+let lng;
+let options= {}
+ async function geocode(){
+        console.log(document.getElementById('address').innerText);
+        let location = document.getElementById('address').innerText;
+        options = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
           params: {
             address: location,
             key: "AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI"
           }
         })
-  .then(function(response){
-   // console.log(response);
-    latitude = response.data.results[0].geometry.location.lat;
-    long = response.data.results[0].geometry.location.lng;
-let marker = new google.maps.Marker({
-    position:{lat:latitude, lng:long},
-    map:map
-});
-  })
-.catch(function(error){
-console.log(error);
-});
+        .then(function(response){
+        // console.log(response);
+          latitude = response.data.results[0].geometry.location.lat;
+          long = response.data.results[0].geometry.location.lng;
+          let marker = new google.maps.Marker({
+            position:{lat:latitude, lng:long},
+            map:map
+          });
+          options =  {
+            zoom: 12,
+            center: {lat:latitude, lng:long}
+          }
+          initMap()
+        })
+  .catch(function(error){
+    console.log(error);
+  });
 }
-let options ={
-    zoom: 8,
-    center: {lat, lng}
-}
-//new map
-geocode();
-let map = new google.maps.Map(document.getElementById('map'), options);
-}
+ geocode();
+
+ function initMap(){
+   if (Object.entries(options).length > 0) {
+     let map = new google.maps.Map(document.getElementById('map'), options);
+     new google.maps.Marker({
+            position:{lat:options.center.lat, lng:options.center.lng},
+            map:map
+      });
+   }
+   
+  }
+
 
 
 
@@ -92,7 +102,7 @@ let map = new google.maps.Map(document.getElementById('map'), options);
   
 
 
-  <script async defer
+  <script
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
     </script>
   </body>

@@ -184,13 +184,16 @@ function displayHousesP(func) {
   let rooms = Number(document.getElementById("bedroomNb").value);
   let type = document.getElementById("houseType").value.toString();
 
+
   console.log("the type var  is " + type);
   console.log("the type on db is " + houses[12].attributes[5].value)
   for (let i = 0; i < houses.length; i++) {
-    if (houses[i].attributes[3].value <= price && Number(houses[i].attributes[4].value) == rooms) {
-      // for room type not working 
-      // && houses[i].attributes[5].value == (type||"any")
+    if (houses[i].attributes[3].value <= price && Number(houses[i].attributes[4].value) === rooms) {
+      //    not working need to be added 
+      //&& houses[i].attributes[5].value === type
 
+      // for room type not working 
+      //houses[i].attributes[5].value) === type 
 
       locations = houses[i].attributes["1"].value.toString();
       axios

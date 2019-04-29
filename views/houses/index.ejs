@@ -7,28 +7,23 @@
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 
     <title></title>
     <style>
     #map{
       height: 400px;
       width : 400px
-    
     }
     #imgMap{
       height: 50px;
       width: auto;
     }
-    
-
-    
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
     </head>
-
     <body>
       <header>
         <section>
@@ -49,12 +44,7 @@
             <a href="/auth/login">Logout</a>
           </li>
         </section>
-
-
-    
-
     <a href="/houses"><h1>Home</h1></a>
-    
     </header>
     <main>
       <h2> List of Houses</h2>
@@ -64,12 +54,7 @@
           </li> </a>
         <%}%>
       </ul>
-
-     
-
-      
 <form id="location-form">
-
 <input id="location-input" type="text" placeholder="enter address">
 
         <select id="maxPrice" name="price">
