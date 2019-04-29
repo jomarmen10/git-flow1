@@ -134,15 +134,11 @@ function geocode() {
 
 function displayHouses(func) {
   let houses = document.querySelectorAll(".house");
-
-  console.log(houses[0].attributes["1"].value); //address
-  console.log(houses[0].attributes[2].value); // img
-  console.log(houses[0].attributes[3].value); // price 
-  console.log(houses[9].attributes[4].value); // price 
-  console.log(houses[12].attributes[5].value) // type
-
-
-
+  // console.log(houses[0].attributes["1"].value); //address
+  // console.log(houses[0].attributes[2].value); // img
+  // console.log(houses[0].attributes[3].value); // price 
+  // console.log(houses[9].attributes[4].value); // price 
+  // console.log(houses[12].attributes[5].value) // type
   for (let i = 0; i < houses.length; i++) {
     locations = houses[i].attributes["1"].value.toString();
     axios
@@ -178,22 +174,21 @@ function displayHouses(func) {
 }
 
 function displayHousesP(func) {
+  const housesToDisplay = []
   let houses = document.querySelectorAll(".house");
-
   let price = Number(document.getElementById("maxPrice").value);
   let rooms = Number(document.getElementById("bedroomNb").value);
   let type = document.getElementById("houseType").value.toString();
-
-
   console.log("the type var  is " + type);
   console.log("the type on db is " + houses[12].attributes[5].value)
   for (let i = 0; i < houses.length; i++) {
-    if (houses[i].attributes[3].value <= price && Number(houses[i].attributes[4].value) === rooms) {
-      //    not working need to be added 
-      //&& houses[i].attributes[5].value === type
-
+    if (houses[i].attributes[3].value <= price &&
+      Number(houses[i].attributes[4].value) === rooms) {
+      //   to check house type but  not working need to be added 
+      // && houses[i].attributes[5].value === type ||"any"
       // for room type not working 
       //houses[i].attributes[5].value) === type 
+      housesToDisplay.push(houses[i])
 
       locations = houses[i].attributes["1"].value.toString();
       axios
@@ -206,14 +201,13 @@ function displayHousesP(func) {
         .then(function (response) {
           //  show object of address
           //console.log(response);
+          showHouseTitles(housesToDisplay)
 
           //geo
           latitude = response.data.results[0].geometry.location.lat;
           long = response.data.results[0].geometry.location.lng;
-
           //console.log(latitude);
           // console.log(long);
-
           console.log(houses[0].attributes["3"].value);
           func({
             coords: {
@@ -232,9 +226,6 @@ function displayHousesP(func) {
   }
 }
 
-
-
-
-
-
-/////////
+const showHouseTitles = (houses) => {
+  houses.forEach(house => house.style.display = "block")
+}
