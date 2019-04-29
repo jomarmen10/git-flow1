@@ -1,21 +1,21 @@
 const express = require("express");
 const router = express.Router();
 
-const House = require ('../models/houses');
-const Realtor = require ('../models/realtors'); //replace Realtor/ allRealtors
+const House = require('../models/houses');
+const Realtor = require('../models/realtors'); //replace Realtor/ allRealtors
 
 //new route
-router.get('/new', async(req,res) => {
-  try{
+router.get('/new', async (req, res) => {
+  try {
     const foundRealtor = await Realtor.find({});
-    res.render('houses/new.ejs',{
+    res.render('houses/new.ejs', {
       realtors: foundRealtor
     })
-  }catch(err){
+  } catch (err) {
     res.send(err)
   }
 });
-////////////////////////////////////////////////
+///////////////////////////////////////////////
 // index route get route and post Working
 router.get('/', async (req, res) => {
   try {
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
       message: req.session.message
     })
 
-  }catch(error){
+  } catch (error) {
     res.send(error);
   }
 });
@@ -37,8 +37,8 @@ router.get('/', async (req, res) => {
 // })
 
 
-router.post('/', async(req, res)=>{
-  try{
+router.post('/', async (req, res) => {
+  try {
 
     const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
@@ -47,68 +47,93 @@ router.post('/', async(req, res)=>{
     findRealtor.save();
     console.log("house pushed and realtor saved")
     res.redirect('/houses')
-  }catch(err){
+  } catch (err) {
     res.send(err)
   }
 });
 
 //show route
-router.get('/:id', async(req,res) => {
-    try{
-    const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}})
+router.get('/:id', async (req, res) => {
+  try {
+    const foundHouse = await Realtor.findOne({
+      'houses': req.params.id
+    }).populate({
+      path: 'houses',
+      match: {
+        _id: req.params.id
+      }
+    })
     res.render('houses/show.ejs', {
       house: foundHouse.houses[0],
       realtor: foundHouse,
     });
-    }catch(error){
-        res.send(error);
-    }
+  } catch (error) {
+    res.send(error);
+  }
 });
 
-router.get('/:id', async(req,res) => {
-  try{
-    const foundHouse = await Realtor.findOne({'houses': req.params.id}).populate({path: 'houses', match: {_id: req.params.id}});
+router.get('/:id', async (req, res) => {
+  try {
+    const foundHouse = await Realtor.findOne({
+      'houses': req.params.id
+    }).populate({
+      path: 'houses',
+      match: {
+        _id: req.params.id
+      }
+    });
     res.render('houses/show.ejs', {
       houses: foundHouse[0],
       realtor: foundHouse
     })
-  }catch(err){
+  } catch (err) {
     res.send(err);
   }
 });
 
 //Edit route get and put req
-router.get('/:id/edit', async(req,  res) => {   //'/:id/edit'
-    try{
-      const foundOne = await Realtor.findOne({'houses':req.params.id}).populate({path: 'houses', match: {_id: req.params.id}})
-      res.render('houses/edit.ejs', {
-        house: foundOne.houses[0],
-        realtor: foundOne
-      });
-    }catch(error){
-        res.send(error);
-    }
+router.get('/:id/edit', async (req, res) => { //'/:id/edit'
+  try {
+    const foundOne = await Realtor.findOne({
+      'houses': req.params.id
+    }).populate({
+      path: 'houses',
+      match: {
+        _id: req.params.id
+      }
+    })
+    res.render('houses/edit.ejs', {
+      house: foundOne.houses[0],
+      realtor: foundOne
+    });
+  } catch (error) {
+    res.send(error);
+  }
 });
 
-router.put('/:id', async(req, res)=> {
-  try{
-    const foundHouse = await House.findByIdAndUpdate(req.params.id,req.body,{new:true});
+router.put('/:id', async (req, res) => {
+  try {
+    const foundHouse = await House.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
     res.redirect('/houses')
-  }catch(error){
+  } catch (error) {
     res.send(error);
   }
 });
 
 
 //delete route
-router.delete('/:id', async(req,res) => {
-  try{
+router.delete('/:id', async (req, res) => {
+  try {
     const deletedHouse = await House.findByIdAndRemove(req.params.id);
-    const foundRealtor = await Realtor.findOne({'houses': req.params.id});
+    const foundRealtor = await Realtor.findOne({
+      'houses': req.params.id
+    });
     await foundRealtor.houses.remove(req.params.id);
     await foundRealtor.save();
     res.redirect('/houses');
-  }catch(error){
+  } catch (error) {
     res.send(error);
   }
 });
