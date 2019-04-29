@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script defer type="text/javascript" src="/js/app.js"></script>
@@ -13,32 +19,38 @@
       <body>
         <header>
             <section>
-                <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+                  <div class ="grid-container" id = "header"></div>
             </section>
-
             <section>
-                <div id = "indexlogin">
-                    <form action="/auth/login" method="POST">
-                    <input type="text" name="username" placeholder="username">
-                    <input type="password" name="password" placeholder="password">
-                          <a href="/houses/new"><button type="submit">Login</button></a>
-                    </form>
+                  <div class = "grid-container" id ="grid1">
+                      <div class = "grid-item" id = "registerroute">
+                          <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+                      </div>
+
+                      <div class = "grid-item" id = "indexlogin">
+                          <form action="/auth/login" method="POST">
+                          <input type="text" name="username" placeholder="username">
+                          <input type="password" name="password" placeholder="password">
+                                <a href="/houses/new"><button type="submit">Login</button></a>
+                          </form>
                               <small> <%=message%></small>
-                 </div>
+                      </div>
+                  </div>
             </section>
-
+                
             <section>
-                <nav>
-                  <li>
-                      <a href="/auth/login">Logout</a>
-                      <a href="/houses"><h1>Home</h1></a>
-                      <a href="/realtor">realtor</a>
-                  </li>
-                </nav>
+                  <div>
+                      <nav>
+                          <li>
+                              <a href="/auth/login">Logout</a>
+                              <a href="/houses"><h1>Home</h1></a>
+                              <a href="/realtor">realtor</a>
+                          </li>
+                      </nav>
+                  </div>
             </section>
-    </header>
-
-  <main>
+      </header>
+<main>
          <!---Carosoul-->   
             <h2> </h2>
           <ul id="list-of-houses">
