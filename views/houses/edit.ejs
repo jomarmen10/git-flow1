@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+   <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ 
     <title></title>
   </head>
   <body>
     <header>
-      <a href="/houses"><h1>Home</h1></a>
+      <a href="/houses"><h6>Home</h6></a>
     </header>
-    <main>
-      <h1>House Edit route In</h1>
-      <h1>Realtor: <%=realtor.name%></h1>
+    
+      <h6>House Edit route In</h6>
+<div class = "container" id = "register">
+      <h6>Realtor: <%=realtor.name%></h6>
       <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
+        <div class = "input-field">
         <input type="text" name="list" value="<%=house.list%>" placeholder="House Listing"/><br/>
+        <label class = "active" for = "list">Name</label>
+        </div>
+        
+   <div class = "input-field">
         <input type ="text" name ="img" value="<%=house.img%>" placeholder ="photo url here"/><br/>
+       <label class = "active" for = "img">Image</label>
+  </div>
+
+     <div class = "input-field">
         <input type ="text" name ="address" value="<%=house.address%>" placeholder ="Street Name, Zip, State"/><br/>
+        <label class = "active" for = "address">Address</label>
+     </div>
+        
+      <div class = "input-field">
         <input type ="text" name ="price" value="<%=house.price%>" placeholder ="Price Range"/><br/>
+       <label class = "active" for = "price">Price</label>
+      </div> 
+        
+      <div class = "input-field">
         <input type ="text" name ="type" value="<%=house.type%>" placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
-        <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
+      <label class = "active" for = "type">Type</label>
+      </div> 
+        
+      <div class = "input-field">
+       <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
+       <label class = "active" for = "rooms">Rooms</label>
+      </div> 
+       
         <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
         <button type="submit">UPDATE</button>
       </form>
       <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
       <input type = "submit" value = "DELETE HOUSE"/>
-    </main>
+</div>
   </body>
 </html>
