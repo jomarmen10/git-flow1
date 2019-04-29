@@ -1,87 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script defer type="text/javascript" src="/js/app.js"></script>
-    <script defer type="text/javascript" src= "/js/map.js"></script>
-    <script async defer
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css">
-    <title></title>
-    <style>
-    #map{
-      height: 400px;
-      width : 400px;
-    }
-    #imgMap{
-      height: 50px;
-      width: auto;
-    }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script defer type="text/javascript" src="/js/app.js"></script>
+        <script defer type="text/javascript" src= "/js/map.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+            <title></title>
   </head>
-  <body>
-    <header>
-      <section>
-        <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
-      </section>
+      <body>
+        <header>
+            <section>
+                  <div class ="grid-container" id = "header"></div>
+            </section>
+            <section>
+                  <div class = "grid-container" id ="grid1">
+                      <div class = "grid-item" id = "registerroute">
+                          <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+                      </div>
 
-      <nav>
-        <a href="/auth/login">SignIn</a>/<a href="/auth/logout">SignOut</a>
-      </nav>
+                      <div class = "grid-item" id = "indexlogin">
+                          <form action="/auth/login" method="POST">
+                          <input type="text" name="username" placeholder="username">
+                          <input type="password" name="password" placeholder="password">
+                                <a href="/houses/new"><button type="submit">Login</button></a>
+                          </form>
+                              <small> <%=message%></small>
+                      </div>
+                  </div>
+            </section>
+                
+            <section>
+                  <div>
+                      <nav>
+                          <li>
+                              <a href="/auth/login">Logout</a>
+                              <a href="/houses"><h1>Home</h1></a>
+                              <a href="/realtor">realtor</a>
+                          </li>
+                      </nav>
+                  </div>
+            </section>
+      </header>
+<main>
+         <!---Carosoul-->   
+            <h2> </h2>
+          <ul id="list-of-houses">
+              <%for(let i = 0; i < houses.length; i++) {%>
+                  <a href="/houses/<%=houses[i]._id%>"> 
+                      <img src = "<%= houses[i].img%>"> 
+                            <li class="house" 
+                                  data-add="<%=houses[i].address%>"  
+                                  data-img="<%=houses[i].img%>"   
+                                  data-price="<%=houses[i].price%>"   
+                                  data-rooms="<%=houses[i].rooms%>" 
+                                  data-type="<%=houses[i].type%>" > 
+                                      <%=houses[i].list%>
+                            </li> </a>
+                                <%}%>
+          </ul>
 
-      <section>
-        <h1 id='login-wlcm'> Login</h1>
-        <form action = "/auth/login" method = "POST">
-          <input type = "text" name = "username" placeholder = "username">
-          <input type = "password" name = "password" placeholder = "password">
-        <a href = "/houses/new"><button type="submit" id='login'>Login</button></a>
-        </form>
-        <small><%=message%></small>
-      </section>
+    <div >
+              <form id="location-form">
+                  <input id="location-input" type="text" placeholder="enter address">
 
-      <h1><%=realtor%></h1>
+                        <select id="maxPrice" name="price">
+                                <option value="9999999">Max Price</option>
+                                <option value="500">less than 500</option>
+                                <option value="1000">less than 1000</option>
+                                <option value="2000">less than 2000</option>
+    
+                        </select>
 
-
-      <a href="/houses"><h1>Home</h1></a>
-    </header>
-    <main>
-      <h2> List of Houses</h2>
-      <a href="/realtor">realtor</a>
-      <ul id="list-of-houses">
-        <%for(let i = 0; i < houses.length; i++) {%>
-          <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>" data-price="<%=houses[i].price%>" data-img="<%=houses[i].img%>"> <%=houses[i].list%>
-          </li> </a>
-        <%}%>
-      </ul>
-
-      <input id="location-input" type="text">
-      <form id="location-form">
-        <input type="text">
+        
+                        <select id="bedroomNb" >
+                                <option value="9999999">All Bedrooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                        </select>
 
 
-        <form id="location-form">
-        <select name="price">
-        <input id="location-input" type="text" placeholder="enter address">
+                        <select id="houseType" >
+                                <option value="any">Type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="House">House</option>
+                                <option value="Condos">Condos</option>
+                        </select>
 
-        <select name="price">
-        <option value="">less than</option>
-        <option value="500">500</option>
-        <option value="1000">1000</option>
-        <option value="2000">2000</option>
-        </select>
+                                    <button type="submit">Submit</button>
+            </form>
+      </div>
 
-        <select name="location">Radius Search</select>
-        <select name="rooms">Bed/Room</select>
-        <select name="type">Type</select>
-        <button type="submit">Submit</button>
-        <input  id="textPrice" type="text" placeholder="less than">
-      </form>
-
-      <div id="map"/>
+<div id="map"></div>
 
   </body>
 </html>

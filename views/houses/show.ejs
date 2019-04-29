@@ -2,6 +2,16 @@
 <html>
   <head>
     <title></title>
+    
+    <style>
+    #map{
+      height: 400px;
+      width : 400px
+    
+    }
+    
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <header>
@@ -14,8 +24,9 @@
         <h1>for sale by: <a href="/realtor/<%=realtor._id%>"><%=realtor.name%></h1> </a>
          <h1><%=house.list%></h1>
           <img src = "<%=house.img%>">
-              <h2>Address:<%=house.address%><br/>
-               $<%=house.price%><br/>
+          <h2 >address</h2>
+              <h2 id="address"><%=house.address%></h2>
+              <h2> $<%=house.price%><br/>
                 Type:<%=house.type%><br/>
                 Number of Rooms:<%=house.rooms%><br/>
               </h2>
@@ -28,6 +39,69 @@
 
         </section>
 
+ <h1>map</h1>
+        <div id="map"></div>
+       
     </main>
+<script>
+let lat;
+let lng;
+let options= {}
+ async function geocode(){
+        console.log(document.getElementById('address').innerText);
+        let location = document.getElementById('address').innerText;
+        options = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+          params: {
+            address: location,
+            key: "AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI"
+          }
+        })
+        .then(function(response){
+        // console.log(response);
+          latitude = response.data.results[0].geometry.location.lat;
+          long = response.data.results[0].geometry.location.lng;
+          let marker = new google.maps.Marker({
+            position:{lat:latitude, lng:long},
+            map:map
+          });
+          options =  {
+            zoom: 12,
+            center: {lat:latitude, lng:long}
+          }
+          initMap()
+        })
+  .catch(function(error){
+    console.log(error);
+  });
+}
+ geocode();
+
+ function initMap(){
+   if (Object.entries(options).length > 0) {
+     let map = new google.maps.Map(document.getElementById('map'), options);
+     new google.maps.Marker({
+            position:{lat:options.center.lat, lng:options.center.lng},
+            map:map
+      });
+   }
+   
+  }
+
+
+
+
+
+
+
+
+</script>
+
+
+  
+
+
+  <script
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
+    </script>
   </body>
 </html>
