@@ -20,21 +20,26 @@ router.get('/new', async(req,res) => {
 router.get('/', async (req, res) => {
   try {
     const foundHouses = await House.find({});
+    const foundRealtor = await Realtor.findOne({});
     res.render('houses/index.ejs', {
+      realtor: req.session.name,
       houses: foundHouses,
       message: req.session.message
     })
-    
+
   }catch(error){
     res.send(error);
   }
-
 });
+
+// router.get('/signin', (req, res)=>{
+//   res.render('houses/signin.ejs')
+// })
 
 
 router.post('/', async(req, res)=>{
   try{
- 
+
     const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
     console.log(findRealtor)

@@ -10,8 +10,6 @@ router.get('/login', (req, res, next) => {
    { message: req.session.message})
 });
 
-
-
 router.post('/register', async (req, res) => {
   const password = req.body.password;
   console.log('======pw======')
@@ -20,37 +18,38 @@ router.post('/register', async (req, res) => {
   console.log('======username======')
   console.log("username",req.body.username)
   console.log('======username======')
+  console.log('======name======')
+  console.log(req.body.name)
+  console.log('======name======')
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const realtorDbEntry = {};
   realtorDbEntry.username = req.body.username;
   realtorDbEntry.password = passwordHash;
+  realtorDbEntry.name = req.body.name;
+  realtorDbEntry.email = req.body.email;
   try {
     const createdRealtor = await Realtor.create(realtorDbEntry);
     console.log("realtor created")
     req.session.logged = true;
     req.session.realtorDbId = createdRealtor._id;
     console.log("redirecting..")
-    res.redirect(`/realtor/${createdRealtor._id}`);
+    res.redirect('/houses')
+    // res.redirect(`/realtor/${createdRealtor._id}`);
 
   } catch(err){
     res.send(err)
   }
 });
 
-
-
-
-
-
-router.post('/login', async (req, res) => { 
+router.post('/login', async (req, res) => {
   try {
     const foundRealtor = await Realtor.findOne({'username': req.body.username});
     console.log(foundRealtor)
     // const foundRealtorPassword = Realtor.password.findOne({passwordHash:req.body.password})
-    if(foundRealtor){  
-      console.log("comparing password") 
-      if(bcrypt.compareSync(req.body.password, foundRealtor.password)){  
-        console.log("password is valid")   
+    if(foundRealtor){
+      console.log("comparing password")
+      if(bcrypt.compareSync(req.body.password, foundRealtor.password)){
+        console.log("password is valid")
         req.session.message = 'You sucessfully logged in';
         req.session.logged = true;
         req.session.realtorDbId = foundRealtor._id;
@@ -58,7 +57,7 @@ router.post('/login', async (req, res) => {
         console.log(req.session, ' successful in login')
         res.redirect(`/realtor/${foundRealtor._id}`);  //house index
       if(!foundRealtor){
-        
+
       }
       } else {
         console.log(foundRealtor.password)
