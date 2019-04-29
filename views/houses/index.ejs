@@ -7,21 +7,13 @@
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
-<<<<<<< HEAD
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 
-=======
-    <link rel="stylesheet" href="/css/style.css">
->>>>>>> master
     <title></title>
     <style>
     #map{
       height: 400px;
-<<<<<<< HEAD
       width : 400px
-=======
-      width : 400px;
->>>>>>> master
     }
     #imgMap{
       height: 50px;
@@ -31,7 +23,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<<<<<<< HEAD
     </head>
     <body>
       <header>
@@ -54,45 +45,16 @@
           </li>
         </section>
     <a href="/houses"><h1>Home</h1></a>
-=======
-    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <section>
-        <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
-      </section>
-
-      <nav>
-        <a href="/auth/login">SignIn</a>/<a href="/auth/logout">SignOut</a>
-      </nav>
-
-      <section>
-        <h1 id='login-wlcm'> Login</h1>
-        <form action = "/auth/login" method = "POST">
-          <input type = "text" name = "username" placeholder = "username">
-          <input type = "password" name = "password" placeholder = "password">
-        <a href = "/houses/new"><button type="submit" id='login'>Login</button></a>
-        </form>
-        <small><%=message%></small>
-      </section>
-
-      <h1><%=realtor%></h1>
-
-
-      <a href="/houses"><h1>Home</h1></a>
->>>>>>> master
+    <a href="/realtor">realtor</a>
     </header>
     <main>
-      <h2> List of Houses</h2>
-      <a href="/realtor">realtor</a>
+      <h2> </h2>
       <ul id="list-of-houses">
         <%for(let i = 0; i < houses.length; i++) {%>
           <a href="/houses/<%=houses[i]._id%>"> <li class="house" data-add="<%=houses[i].address%>"  data-img="<%=houses[i].img%>"   data-price="<%=houses[i].price%>"   data-rooms="<%=houses[i].rooms%>" data-type="<%=houses[i].type%>" > <%=houses[i].list%>
           </li> </a>
         <%}%>
       </ul>
-<<<<<<< HEAD
 <form id="location-form">
 <input id="location-input" type="text" placeholder="enter address">
 
@@ -121,32 +83,10 @@
      </select>
 
 
-=======
-
-      <input id="location-input" type="text">
-      <form id="location-form">
-        <input type="text">
-
-
-        <form id="location-form">
-        <select name="price">
-        <input id="location-input" type="text" placeholder="enter address">
-
-        <select name="price">
-        <option value="">less than</option>
-        <option value="500">500</option>
-        <option value="1000">1000</option>
-        <option value="2000">2000</option>
-        </select>
-
-        <select name="location">Radius Search</select>
-        <select name="rooms">Bed/Room</select>
-        <select name="type">Type</select>
->>>>>>> master
         <button type="submit">Submit</button>
       </form>
 
-      <div id="map"/>
+      <div id="map"> </div>
 
   </body>
 </html>

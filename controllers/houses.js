@@ -27,12 +27,7 @@ router.get('/', async (req, res) => {
       houses: foundHouses,
       message: req.session.message
     })
-
-<<<<<<< HEAD
   } catch (error) {
-=======
-  }catch(error){
->>>>>>> master
     res.send(error);
   }
 });
@@ -42,13 +37,8 @@ router.get('/', async (req, res) => {
 // })
 
 
-<<<<<<< HEAD
 router.post('/', async (req, res) => {
   try {
-=======
-router.post('/', async(req, res)=>{
-  try{
->>>>>>> master
 
     const findRealtor = await Realtor.findById(req.session.realtorDbId);
     const createList = await House.create(req.body);
