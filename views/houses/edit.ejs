@@ -15,7 +15,6 @@
       <a href="/houses"><h6>Home</h6></a>
     </header>
 
-
 <div class = "container" id = "register">
       <h6>Realtor: <%=realtor.name%></h6>
       <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
@@ -47,13 +46,33 @@
       <div class = "input-field">
        <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
        <label class = "active" for = "rooms">Rooms</label>
+
       </div>
 
+
         <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
-        <button type="submit">UPDATE</button>
-      </form>
-      <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
-      <input type = "submit" value = "DELETE HOUSE"/>
+
 </div>
+
+
+    <div class="container">
+      <div class = "row">
+
+        <div style="float:left;">
+          <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+          </button>
+          </form>
+        </div>
+          
+        <div style="float:right;">
+          <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
+          <button class="btn waves-effect waves-light red  " type="submit" name="action">DELETE
+          <i class="material-icons right">send</i>
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
