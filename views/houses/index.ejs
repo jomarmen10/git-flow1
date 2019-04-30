@@ -17,6 +17,8 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
             <title></title>
+
+
   </head>
       <body>
         <header>
@@ -63,19 +65,20 @@
 
       </section>
 <main>
-       
+
+
 
 <section>
    <ul id="list-of-houses">
               <%for(let i = 0; i < houses.length; i++) {%>
-                   <li class="house" 
-                                  data-add="<%=houses[i].address%>"  
-                                  data-img="<%=houses[i].img%>"   
-                                  data-price="<%=houses[i].price%>"   
-                                  data-rooms="<%=houses[i].rooms%>" 
-                                  data-type="<%=houses[i].type%>" >                   
-                  </li>  
-                   
+                   <li class="house"
+                                  data-add="<%=houses[i].address%>"
+                                  data-img="<%=houses[i].img%>"
+                                  data-price="<%=houses[i].price%>"
+                                  data-rooms="<%=houses[i].rooms%>"
+                                  data-type="<%=houses[i].type%>" >
+                  </li>
+
     <div class="col s12 m6">
       <div class="card">
         <div class="card-image">
@@ -88,29 +91,30 @@
         </div>
       </div>
     </div>
-  </div>   
+  </div>
      <%}%>
     </ul>
 </section>
 
 <section>
 
- 
- 
- 
+
+
+
+
          <div >
               <form id="location-form">
                   <input id="location-input" type="text" placeholder="enter address">
-                      <div class="input-field">  
+                      <div class="input-field">
                         <select id="maxPrice" name="price">
                                 <option value="9999999">Max Price</option>
                                 <option value="500">less than 500</option>
                                 <option value="1000">less than 1000</option>
                                 <option value="2000">less than 2000</option>
-    
+
                         </select>
                       </div>
-                      <div class="input-field">  
+                      <div class="input-field">
                         <select id="bedroomNb" >
                                 <option value="9999999">All Bedrooms</option>
                                 <option value="1">1</option>
@@ -118,7 +122,7 @@
                                 <option value="3">3</option>
                         </select>
                       </div>
-                      <div class="input-field">    
+                      <div class="input-field">
                         <select id="houseType" >
                                 <option value="any">Type</option>
                                 <option value="apartment">Apartment</option>
@@ -127,7 +131,7 @@
                         </select>
                       </div>
                                     <button type="submit">Submit</button>
-           
+
       </div>
 </section>
 <section>
@@ -162,4 +166,3 @@
           </div>
         </footer>
 </html>
-

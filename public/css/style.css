@@ -1,7 +1,7 @@
 
 #map{
     height: 400px;
-    width : 400px
+    width :document.width;
   }
 #imgMap{
     height: 50px;
@@ -16,7 +16,7 @@
 #registerroute {
     text-align: center;
     text-align: left;
-    
+
 }
 
 .grid-container {
