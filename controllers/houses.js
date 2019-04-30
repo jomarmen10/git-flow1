@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     res.render('houses/index.ejs', {
       realtor: req.session.name,
       houses: foundHouses,
-      message: req.session.message
+      message: req.session.message,
     })
 
   } catch (error) {
@@ -63,33 +63,18 @@ router.get('/:id', async (req, res) => {
         _id: req.params.id
       }
     })
+    console.log('req.session.realtorDbId', req.session)
     res.render('houses/show.ejs', {
       house: foundHouse.houses[0],
       realtor: foundHouse,
+      logged: req.session.logged,
+
     });
   } catch (error) {
     res.send(error);
   }
 });
 
-router.get('/:id', async (req, res) => {
-  try {
-    const foundHouse = await Realtor.findOne({
-      'houses': req.params.id
-    }).populate({
-      path: 'houses',
-      match: {
-        _id: req.params.id
-      }
-    });
-    res.render('houses/show.ejs', {
-      houses: foundHouse[0],
-      realtor: foundHouse
-    })
-  } catch (err) {
-    res.send(err);
-  }
-});
 
 //Edit route get and put req
 router.get('/:id/edit', async (req, res) => { //'/:id/edit'
