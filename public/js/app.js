@@ -41,3 +41,6 @@ $('.carousel.carousel-slider').carousel({
   noWrap: false,
 });
 
+
+
+//footer

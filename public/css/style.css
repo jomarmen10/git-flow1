@@ -1,7 +1,7 @@
 
 #map{
     height: 400px;
-    width : document.width;
+    width :document.width;
   }
 #imgMap{
     height: 50px;
@@ -27,18 +27,8 @@
     position: absolute;
     margin-top: 50px;
 }
-.grid-item {
-    border:none;
-    padding: 0px;
-    font-size: 20px;
-    text-align: center;
-    position: relative;
-  }
-#grid1{
-    text-align: center;
-}
-#header{
 
+.header{
     background-color:teal;
 }
 .carousel{
@@ -50,19 +40,10 @@
 }
 .card{
     width: 500px;
-    height: 500px;
+    height: 400px;
 }
 
-    color:red;
-    height: 200px;
-    width: 1000px;
+.container.register.container{
+    top:auto;
+    left:auto;
 }
-
-h1 {
-  color: black;
-}
-
-footer {
-  border: 1px solid black;
-}
-
