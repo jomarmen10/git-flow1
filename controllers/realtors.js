@@ -32,8 +32,9 @@ router.get("/:id", async (req, res) => {
     const showRealtors = await Realtor.findById(req.params.id).populate(
       "houses"
     ).exec();
+    let current;
     if(showRealtors._id.toString() === req.session.realtorDbId.toString()){
-      let current = true
+      current = true
     }
     res.render("realtors/show.ejs", {
       realtor: showRealtors,
