@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="stylesheet" href="/css/New_house.css">
-    <title></title>
+  <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ 
   </head>
   <body>
     <header>
-      <a href="/houses"><h1>Home</h1></a>
+      <a href="/houses"><h4>Home</h4></a>
     </header>
-    <main>
-      <h1><%=realtors.username%></h1>
-      <h1>House new route In</h1>
+    
+          <h1><%=realtors.username%></h1>
+<div class = "container" id = "houses">
+      <h4>Create a new add</h4>
       <form action='/houses' method="POST">
 
+
+        <div class = "input-field">
         <input type="text" name="list" placeholder="House Listing"/>
+        <label class = "active" for = "list">Name</label>
+        </div>
+
+        <div class = "input-field">
         <input type = "zip" name ="address" placeholder = "Street Name, Zip, State"/>
+        <label class = "active" for = "address">address</label>
+        </div>
+        
+        <div class = "input-field">
         <input type = "number" name = "price" placeholder = " Price Range"/><br/>
+        <label class = "active" for = "price">Price</label>
+        </div>
+        
+        <div class = "input-field">
         <input type = "text" name = "img" placeholder ="photo url here"/>
+        <label class = "active" for = "img">Imgage Link</label>
+        </div>
+
+       <div class = "input-field">
         <input type = "text" name = "type" placeholder = "Apts, Condo, Houses, Studio"/>
+       <label class = "active" for = "type">type</label>
+        </div>
+       
+        <div class = "input-field">
         <input type = "number" name = "rooms" placeholder = "Number of rooms" /><br/>
+        <label class = "active" for = "rooms">rooms</label>
+        </div>
+        
+      <div>
         <textarea name = "body" placeholder = "House Listing Info Here"></textarea><br/>
         <button type="submit" value = "Publish House">Publish House Listing</button>
+       </div>
 
       </form>
 
-    </main>
+</div>
   </body>
 </html>

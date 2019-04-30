@@ -33,7 +33,7 @@
 
           <p><%=house.body%></p>
 
-          <%if (realtor.isAdmin){%>
+        <%if(realtor.isAdmin && realtor.name === realtor.name){%>
             <a href = "/houses/<%=house._id%>/edit">Edit</a>
           <%}%>
 

@@ -20,9 +20,9 @@
       <body>
         <header>
             <section>
-                  <div class ="grid-container" id = "header"></div>
-            </section>
-            <section>
+                <div class = "row">
+                  <div class ="col s12" id = "header"></div>
+           
                   <div class = "grid-container" id ="grid1">
                       <div class = "grid-item" id = "registerroute">
                           <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
@@ -32,22 +32,25 @@
                           <form  class = "right-align"action="/auth/login" method="POST">
                           <input type="text" name="username" placeholder="username">
                           <input type="password" name="password" placeholder="password">
-                                <a href="/houses/new"><button type="submit">Login</button></a>
                           </form>
-                              <small> <%=message%></small>
-                      </div>
-                  </div>
+                                        <small> <%=message%></small>
+                            <div class = "right-align" id = "loginbtn">
+                                    <a href="/houses/new"><button type="submit">Login</button></a>
+                            </div>
+
+                        </div>
+                   </div>
             </section>
                 
             <section>
                   <div>
-                      <nav>
+                     
                           <li>
                               <a href="/auth/login">Logout</a>
                               <a href="/houses"><h1>Home</h1></a>
                               <a href="/realtor">realtor</a>
                           </li>
-                      </nav>
+                      
                   </div>
             </section>
       </header>

@@ -18,12 +18,14 @@
       <h1> <%=realtor.name%><br/></h1>
       <h2><%=realtor.email%></h2>
 
-      <form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
-        <button type="submit">DELETE</button>
-      </form>
+     
 
       <%if(realtor.isAdmin && realtor.name === realtor.name){%>
         <a href="/realtor/<%=realtor._id%>/edit"> <button >Edit</button> </a>
+        <a href="/houses/new%>"> Add A New Listing</a>
+              <form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
+                    <button type="submit">DELETE</button>
+              </form>
       <%}%>
 
       <section>
