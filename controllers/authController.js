@@ -27,6 +27,7 @@ router.post('/register', async (req, res) => {
   realtorDbEntry.password = passwordHash;
   realtorDbEntry.name = req.body.name;
   realtorDbEntry.email = req.body.email;
+  realtorDbEntry.number = req.body.number;
   try {
     const createdRealtor = await Realtor.create(realtorDbEntry);
     console.log("realtor created")
@@ -84,6 +85,7 @@ router.get('/logout', (req, res) => {
     if(err){
       res.send(err);
     } else {
+      console.log(req.session, 'logged out')
       res.redirect('/auth/login');
       //req.session.message;
 

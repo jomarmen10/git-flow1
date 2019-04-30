@@ -5,7 +5,7 @@ const realtorsSchema = new mongoose.Schema({
   username: { type: String, required: true },
   name:{type: String},
   password: {type: String, require: true },
-  phone:{type: String},
+  phone:{type: Number},
   isAdmin: { type: Boolean, default: true},
   email:{ type: String},
   houses: [{

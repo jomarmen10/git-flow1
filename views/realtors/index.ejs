@@ -6,19 +6,15 @@
   <body>
     <header>
       <a href="/houses"><h1>Home</h1></a>
-       <a href="/houses/new"><h1>Add New Listing</h1></a>
-        <a href="/realtor/:id/edit"><h1>Edit your page</h1></a>
-
-
     </header>
     <main>
       <h1> Realtor Profile page</h1>
+      <h2>Realtors</h2>
       <ul>
         <% for (let i=0; i<realtor.length; i++){%>
           <a href="/realtor/<%=realtor[i]._id%>">
-            <li>
-              <%=realtor[i].name%>
-              <%=realtor[i].email%>
+            <li><%=realtor[i].name%><br>
+               Email: <%=realtor[i].email%>
               <img src = "<%=realtor[i].houses.img%>">
             </li>
           </a>

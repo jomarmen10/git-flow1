@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title></title>
   </head>
   <body>
-    <header>
-      <a href="/houses"><h1>Home</h1></a>
-    </header>
+
     <main>
-      <%if(realtor.isAdmin){%>
-        <p>i am admin </p>
-      <% } else { %>
-        <p>i am not admin </p>
-      <%}%></p>
 
-      <h1>realtor show route In</h1>
-      <h1> <%=realtor.name%><br/></h1>
-      <h2><%=realtor.email%></h2>
+      <div class="row">
+        <div class="col s12 #01579b light-blue darken-4">
+          <a href="/houses"><h1>Home</h1></a>
+        </div>
 
-      <form action="/realtor/<%=realtor._id%>?_method=DELETE" method="POST">
-        <button type="submit">DELETE</button>
-      </form>
+        <div class="col s6">
 
-      <%if(realtor.isAdmin && realtor.name === realtor.name){%>
-        <a href="/realtor/<%=realtor._id%>/edit"> <button >Edit</button> </a>
-      <%}%>
+          <h1> <%=realtor.name%></h1>
 
-      <section>
-      <h2>House for sale</h2>
-      <ul>
-        <% for (let i = 0; i < realtor.houses.length; i++) {%>
-          <li><a href="/houses/<%=realtor.houses[i]._id%>"><%=realtor.houses[i].list%></a></li>
-        <% } %>
-      </ul>
-      </section>
+          <br><br>
 
+          <h4>Email me</h4> <br>
+
+          <form action="<%=realtor.email%>" method="post" enctype="text/plain">
+            Name:<br>
+            <input type="text" name="name"><br>
+            E-mail:<br>
+            <input type="text" name="mail"><br>
+            Comment:<br>
+            <input type="text" name="comment" size="50"><br><br>
+            <button class="btn" type="button" value="Send" >Send</button>
+            <button class="btn" type="reset" value="Reset">Reset</button>
+
+          </form>
+            <br>
+          <%if(logged && current){%>
+            <a href="/realtor/<%=realtor._id%>/edit"> <button class='btn'>Settings</button> </a>
+          <%}%>
+        </div>
+
+        <div class="col s6 center-align"">
+          <h2>House for sale</h2>
+          <ul>
+            <% for (let i = 0; i < realtor.houses.length; i++) {%>
+
+              <div class="card-panel hoverable">
+                <li><h5><%=realtor.houses[i].address%></h5> <br>
+                  <a href="/houses/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
+                </a></li>
+              </div>
+            <% } %>
+          </ul>
+        </div>
+
+      </div>
     </main>
+
+    <footer>
+      <div>
+      <h5 class="center-align">moneyteam100®</h5>
+      </div>
+    </footer>
   </body>
 </html>
