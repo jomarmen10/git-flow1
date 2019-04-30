@@ -17,60 +17,62 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
             <title></title>
+
+
   </head>
       <body>
         <header>
-            <section>
-                   <div class="row1" id ="header">
-                        <div class="col s12">
-                   </div>
+          <section>
 
-                   <div class = "row2 left-align" id ="registerbtn">
-                        <div class = "col s12 m4 l2" id = "registerroute">
-                                <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
-                        </div>
-                   </div>
+            <div class="row1" id ="header">
 
-                    <div class = "row2 right-align" id = "indexlogin">
-                          <form  class = "col s12 m4 l2"action="/auth/login" method="POST">
-                                <input type="text" name="username" placeholder="username">
-                                <input type="password" name="password" placeholder="password">
-                          </form>
+              <div class = "col s12 m4 l2 row2 left-align" id = "registerroute">
+                <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+              </div>
 
-                                        <small> <%=message%></small>
-                    </div>
-                    <div class = "row3 right-align" id = "loginbtn">
-                                 <a href="/houses/new"><button type="submit">Login</button></a>
-                    </div>
-                   </div>
 
-            </section>
+              <div class = "row2 right-align" id = "indexlogin">
+                <form  class = "col s12 m4 l2" action="/auth/login" method="POST">
+                  <input type="text" name="username" placeholder="username">
+                  <input type="password" name="password" placeholder="password">
 
-            <section>
-                  <div>
-
-                        <a href="/auth/login">Logout</a>
-                        <a href="/houses"><h1>Home</h1></a>
-                        <a href="/realtor">realtor</a>
-
+                  <div class = "row3 right-align" id ="loginbtn">
+                    <a href="/houses/new"><button type="submit">Login</button></a>
                   </div>
-            </section>
-      </header>
+
+                  <small> <%=message%></small>
+                </form>
+              </div>
+            </div>
+            
+          </section>
+
+          <section>
+          <div>
+
+                <a href="/auth/login">Logout</a>
+                <a href="/houses"><h1>Home</h1></a>
+                <a href="/realtor">realtor</a>
+
+          </div>
+          </section>
+        </header>
+
 <main>
 
-       
+
 
 <section>
    <ul id="list-of-houses">
               <%for(let i = 0; i < houses.length; i++) {%>
-                   <li class="house" 
-                                  data-add="<%=houses[i].address%>"  
-                                  data-img="<%=houses[i].img%>"   
-                                  data-price="<%=houses[i].price%>"   
-                                  data-rooms="<%=houses[i].rooms%>" 
-                                  data-type="<%=houses[i].type%>" >                   
-                  </li>  
-                   
+                   <li class="house"
+                                  data-add="<%=houses[i].address%>"
+                                  data-img="<%=houses[i].img%>"
+                                  data-price="<%=houses[i].price%>"
+                                  data-rooms="<%=houses[i].rooms%>"
+                                  data-type="<%=houses[i].type%>" >
+                  </li>
+
     <div class="col s12 m6">
       <div class="card">
         <div class="card-image">
@@ -83,7 +85,7 @@
         </div>
       </div>
     </div>
-  </div>   
+  </div>
      <%}%>
     </ul>
 </section>
@@ -91,9 +93,9 @@
 <section>
 
 
- 
- 
- 
+
+
+
          <div >
               <form id="location-form">
                   <input id="location-input" type="text" placeholder="enter address">
@@ -123,7 +125,7 @@
                         </select>
                       </div>
                                     <button type="submit">Submit</button>
-           
+
       </div>
 </section>
 <section>
@@ -132,4 +134,3 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
-
