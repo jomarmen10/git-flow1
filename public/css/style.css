@@ -43,8 +43,7 @@
 .carousel{
     text-align: center;
 }
-.houseimg{
-    text-align:center;
-    width: 80%;
-    height:90%
+#responsive-img{
+    max-width: 50%;
+    height:auto;
 }

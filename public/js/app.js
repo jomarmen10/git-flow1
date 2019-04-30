@@ -26,15 +26,18 @@ $(document).ready(function () {
 
 
 //materizalize for map selection options
+M.AutoInit('');
 $(document).ready(function(){
-  $('.carousel').carousel();
+  $('.carousel').carousel(instance.next(1));
+  $('.carousel').carousel(instance.set(1));
+  $('.carousel').carousel(instance.destory(1));
 });
+
 $('.carousel.carousel-slider').carousel({
   fullWidth: false,
   indicators: true,
-  numVisible: 1,
-  dist:0,
+  numVisible: 5,
+  dist:-100,
   noWrap: false,
 });
-instance.next(6);
-instance.set(6);
+

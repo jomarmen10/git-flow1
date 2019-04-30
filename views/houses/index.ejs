@@ -15,6 +15,7 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
             <title></title>
   </head>
       <body>
@@ -67,21 +68,18 @@
         <div class ="carousel">
             <div class="carousel carousel-slider center">
                  <div class="carousel-fixed-item center">
-                    <a class="btn waves-effect white grey-text darken-text-2" href="/houses/<%=houses[0]._id%>">TAKE A LOOK</a>
+                    <a class="btn waves-effect white grey-text darken-text-2" href="/houses/<%=houses[i]._id%>">View</a>
                 
-
             <div class="carousel-item"> 
-                   <a href="/houses/<%=houses[0]._id%>"><img class ="houseimg" src = "<%= houses[0].img%>"></a>
-            </div>
-          
-      <%}%>
-   </div>
+                   <img class="responsive-img" src = "<%= houses[i].img%>"></a>
+            </div>         
+     <%}%>
     </ul>
 </section>
+
  
-
-
-
+ 
+ 
          <div >
               <form id="location-form">
                   <input id="location-input" type="text" placeholder="enter address">
