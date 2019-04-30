@@ -10,9 +10,10 @@ const realtorsController = require("./controllers/realtors");
 const authController = require("./controllers/authController");
 require("./db/db.js");
 
+
 // const session = require('express-session');
 
-//require('dotenv').config()
+require('dotenv').config()
 //require modules here
 
 //MiddleWare Area

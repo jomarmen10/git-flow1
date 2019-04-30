@@ -1,107 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
-    
-    <style>
-    #map{
-      height: 400px;
-      width : 400px
-    
-    }
-    
-    </style>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <header>
-      <a href="/houses"><h1>Home</h1></a>
-    </header>
-    <main>
-      <h1>House show route In</h1>
-      <section>
-
-        <h1>for sale by: <a href="/realtor/<%=realtor._id%>"><%=realtor.name%></h1> </a>
-         <h1><%=house.list%></h1>
-          <img src = "<%=house.img%>">
-          <h2 >address</h2>
-              <h2 id="address"><%=house.address%></h2>
-              <h2> $<%=house.price%><br/>
-                Type:<%=house.type%><br/>
-                Number of Rooms:<%=house.rooms%><br/>
-              </h2>
-
-          <p><%=house.body%></p>
-
-          <%if (realtor.isAdmin){%>
-            <a href = "/houses/<%=house._id%>/edit">Edit</a>
-          <%}%>
-
-        </section>
-
- <h1>map</h1>
-        <div id="map"></div>
-       
-    </main>
-<script>
-let lat;
-let lng;
-let options= {}
- async function geocode(){
-        console.log(document.getElementById('address').innerText);
-        let location = document.getElementById('address').innerText;
-        options = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-          params: {
-            address: location,
-            key: "AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI"
-          }
-        })
-        .then(function(response){
-        // console.log(response);
-          latitude = response.data.results[0].geometry.location.lat;
-          long = response.data.results[0].geometry.location.lng;
-          let marker = new google.maps.Marker({
-            position:{lat:latitude, lng:long},
-            map:map
-          });
-          options =  {
-            zoom: 12,
-            center: {lat:latitude, lng:long}
-          }
-          initMap()
-        })
-  .catch(function(error){
-    console.log(error);
-  });
-}
- geocode();
-
- function initMap(){
-   if (Object.entries(options).length > 0) {
-     let map = new google.maps.Map(document.getElementById('map'), options);
-     new google.maps.Marker({
-            position:{lat:options.center.lat, lng:options.center.lng},
-            map:map
-      });
-   }
-   
-  }
-
-
-
-
-
-
-
-
-</script>
-
-
-  
-
-
-  <script
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer type="text/javascript" src="/js/show/map.js"> </script>
+    <script defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap">
     </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title></title>
+
+
+  </head>
+  <body>
+
+
+    <div class="row">
+      <div class="col s12 #01579b light-blue darken-4">
+        <a href="/houses"><h1>Home</h1></a>
+      </div>
+
+      <div class="col s6">
+        <h2>location</h2>
+        <div id="map"></div>
+        <h3 >address</h3>
+        <h4 id="address"><%=house.address%></h4>
+      </div>
+
+      <div class="col s6 card-panel hoverable">
+        <a class="waves-effect waves-light btn-large" href="/realtor/<%=realtor._id%>">Contact Seller: <%=realtor.name%></a>
+        <img src="<%=house.img%>" width="600px">
+        <h4> $<%=house.price%> | <%=house.type%> | <%=house.rooms%>bd
+        </h4>
+        <p><%=house.body%></p>
+        <%if(logged){%>
+          <a href="/houses/<%=house._id%>/edit">edit</a>
+        <%}%>
+      </div>
+
+    </div>
+    <footer>
+      <div>
+      <h5 class="center-align">moneyteam100®</h5>
+      </div>
+    </footer>
   </body>
 </html>

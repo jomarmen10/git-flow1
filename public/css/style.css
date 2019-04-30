@@ -1,9 +1,11 @@
-#map {
-    height: 400px;
-    width: 400px
-}
 
-#imgMap {
+
+#map{
+    height: 400px;
+    width :document.width;
+  }
+#imgMap{
+
     height: 50px;
     width: auto;
 }
@@ -11,7 +13,8 @@
 #indexlogin {
     text-align: center;
     margin-right: 152px;
-    left: 342px;
+    left: 500px;
+    display: inline-flex;
 }
 
 #registerroute {
@@ -24,11 +27,11 @@
     display: grid;
     grid-column-gap: 500px;
     grid-template-columns: auto auto;
-    background-color: #2196F3;
     padding: 0px;
     position: absolute;
     margin-top: 50px;
 }
+
 
 .grid-item {
     background-color: yellow;
@@ -48,3 +51,24 @@
     height: 200px;
     width: 1000px;
 }
+
+.header{
+    background-color:teal;
+}
+.carousel{
+    text-align: center;
+}
+#responsive-img{
+    max-width: 50%;
+    height:auto;
+}
+.card{
+    width: 500px;
+    height: 400px;
+}
+
+.container.register.container{
+    top:auto;
+    left:auto;
+}
+
