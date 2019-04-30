@@ -24,56 +24,65 @@
                         <div class="col s12">
                    </div>
 
-                   <div class = "row2" id ="registerbtn">
+                   <div class = "row2 left-align" id ="registerbtn">
                         <div class = "col s12 m4 l2" id = "registerroute">
                                 <a href="/auth/login"><button type="submit">Register To be a Realtor</button></a>
+                        </div>
                    </div>
 
-                      <div class = "grid-item" id = "indexlogin">
-                          <form  class = "right-align"action="/auth/login" method="POST">
-                          <input type="text" name="username" placeholder="username">
-                          <input type="password" name="password" placeholder="password">
+                    <div class = "row2 right-align" id = "indexlogin">
+                          <form  class = "col s12 m4 l2"action="/auth/login" method="POST">
+                                <input type="text" name="username" placeholder="username">
+                                <input type="password" name="password" placeholder="password">
                           </form>
                                         <small> <%=message%></small>
-                            <div class = "right-align" id = "loginbtn">
-                                    <a href="/houses/new"><button type="submit">Login</button></a>
-                            </div>
-
-                        </div>
+                    </div>
+                    <div class = "row3 right-align" id = "loginbtn">
+                                 <a href="/houses/new"><button type="submit">Login</button></a>
+                    </div>
                    </div>
             </section>
                 
             <section>
                   <div>
-                     
-                          <li>
-                              <a href="/auth/login">Logout</a>
-                              <a href="/houses"><h1>Home</h1></a>
-                              <a href="/realtor">realtor</a>
-                          </li>
-                      
+                        <a href="/auth/login">Logout</a>
+                        <a href="/houses"><h1>Home</h1></a>
+                        <a href="/realtor">realtor</a>
                   </div>
             </section>
       </header>
 <main>
-         <!---Carosoul-->   
-            <h2> </h2>
-          <ul id="list-of-houses">
+       
+
+<section>
+   <ul id="list-of-houses">
               <%for(let i = 0; i < houses.length; i++) {%>
-                  <a href="/houses/<%=houses[i]._id%>"> 
-                      <img src = "<%= houses[i].img%>"> 
-                            <li class="house" 
+                   <li class="house" 
                                   data-add="<%=houses[i].address%>"  
                                   data-img="<%=houses[i].img%>"   
                                   data-price="<%=houses[i].price%>"   
                                   data-rooms="<%=houses[i].rooms%>" 
-                                  data-type="<%=houses[i].type%>" > 
-                                      <%=houses[i].list%>
-                            </li> </a>
-                                <%}%>
-          </ul>
+                                  data-type="<%=houses[i].type%>" >                   
+                  </li>  
+        <div class ="carousel">
+            <div class="carousel carousel-slider center">
+                 <div class="carousel-fixed-item center">
+                    <a class="btn waves-effect white grey-text darken-text-2" href="/houses/<%=houses[0]._id%>">TAKE A LOOK</a>
+                
 
-    <div >
+            <div class="carousel-item"> 
+                   <a href="/houses/<%=houses[0]._id%>"><img class ="houseimg" src = "<%= houses[0].img%>"></a>
+            </div>
+          
+      <%}%>
+   </div>
+    </ul>
+</section>
+ 
+
+
+
+         <div >
               <form id="location-form">
                   <input id="location-input" type="text" placeholder="enter address">
                       <div class="input-field">  
@@ -110,3 +119,4 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
+

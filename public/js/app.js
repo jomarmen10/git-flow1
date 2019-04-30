@@ -23,7 +23,18 @@ $(document).ready(function () {
   });
 });
 
+
+
+//materizalize for map selection options
 $(document).ready(function(){
-  $('select').formSelect();
+  $('.carousel').carousel();
 });
-     
+$('.carousel.carousel-slider').carousel({
+  fullWidth: false,
+  indicators: true,
+  numVisible: 1,
+  dist:0,
+  noWrap: false,
+});
+instance.next(6);
+instance.set(6);
