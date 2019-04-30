@@ -27,17 +27,8 @@
     position: absolute;
     margin-top: 50px;
 }
-.grid-item {
-    border:none;
-    padding: 0px;
-    font-size: 20px;
-    text-align: center;
-    position: relative;
-  }
-#grid1{
-    text-align: center;
-}
-#header{
+
+.header{
     background-color:teal;
 }
 .carousel{
@@ -49,5 +40,10 @@
 }
 .card{
     width: 500px;
-    height: 500px;
+    height: 400px;
+}
+
+.container.register.container{
+    top:auto;
+    left:auto;
 }
