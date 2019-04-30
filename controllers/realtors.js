@@ -31,9 +31,14 @@ router.get("/:id", async (req, res) => {
   try {
     const showRealtors = await Realtor.findById(req.params.id).populate(
       "houses"
-    );
+    ).exec();
+    if(showRealtors._id.toString() === req.session.realtorDbId.toString()){
+      let current = true
+    }
     res.render("realtors/show.ejs", {
-      realtor: showRealtors
+      realtor: showRealtors,
+      logged: req.session.logged,
+      current
     });
   } catch (err) {
     res.send(err);
@@ -57,10 +62,14 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
   try {
     const foundRealtor = await Realtor.findById(req.params.id);
-    res.render("realtors/edit.ejs", {
-      realtor: foundRealtor,
-      id: req.params.id
-    });
+    if (foundRealtor._id.toString() === req.session.realtorDbId){
+      res.render("realtors/edit.ejs", {
+        realtor: foundRealtor,
+        id: req.params.id
+      });
+    } else {
+      res.redirect(`/realtor/${req.params.id}`)
+    }
   } catch (err) {
     res.send(err);
   }

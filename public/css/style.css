@@ -1,7 +1,7 @@
 
 #map{
     height: 400px;
-    width : 400px
+    width : document.width;
   }
 #imgMap{
     height: 50px;
@@ -16,7 +16,7 @@
 #registerroute {
     text-align: center;
     text-align: left;
-    
+
 }
 
 .grid-container {
@@ -38,6 +38,7 @@
     text-align: center;
 }
 #header{
+
     background-color:teal;
 }
 .carousel{
@@ -51,3 +52,17 @@
     width: 500px;
     height: 500px;
 }
+
+    color:red;
+    height: 200px;
+    width: 1000px;
+}
+
+h1 {
+  color: black;
+}
+
+footer {
+  border: 1px solid black;
+}
+
