@@ -56,7 +56,7 @@
             <h2> </h2>
           <ul id="list-of-houses">
               <%for(let i = 0; i < houses.length; i++) {%>
-                  <a href="/houses/<%=houses[i]._id%>"> 
+                  <a id="countHouse" href="/houses/<%=houses[i]._id%>"> 
                       <img src = "<%= houses[i].img%>"> 
                             <li class="house" 
                                   data-add="<%=houses[i].address%>"  
