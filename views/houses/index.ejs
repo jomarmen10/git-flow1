@@ -65,14 +65,9 @@
                                   data-rooms="<%=houses[i].rooms%>" 
                                   data-type="<%=houses[i].type%>" >                   
                   </li>  
-        <div class ="carousel">
-            <div class="carousel carousel-slider center">
-                 <div class="carousel-fixed-item center">
-                    <a class="btn waves-effect white grey-text darken-text-2" href="/houses/<%=houses[i]._id%>">View</a>
+                    <button><a href="/houses/<%=houses[i]._id%>">View</a></button>
                 
-            <div class="carousel-item"> 
-                   <img class="responsive-img" src = "<%= houses[i].img%>"></a>
-            </div>         
+                   <img class="responsive-img" src = "<%= houses[i].img%>"></a>       
      <%}%>
     </ul>
 </section>
