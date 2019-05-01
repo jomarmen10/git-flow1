@@ -37,4 +37,4 @@ verify their account and accept to use our site.
 
 ## Bugs
 * One minor bug with didnt have time to fix with the map not displaying individual houses info
-* Had an system where the user inputs their information to contact the realtor they would get a confirmation message from the realtor's email that they will contact them later as soon as possible.
+* Had an system where the user inputs their information to contact the realtor they would get a confirmation message from the realtor's email that they will contact them later as soon as possible..
