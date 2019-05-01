@@ -1,18 +1,22 @@
 
+
 #map{
     height: 400px;
     width :document.width;
   }
 #imgMap{
+
     height: 50px;
     width: auto;
-  }
+}
+
 #indexlogin {
     text-align: center;
     margin-right: 152px;
     left: 500px;
     display: inline-flex;
 }
+
 #registerroute {
     text-align: center;
     text-align: left;
@@ -26,6 +30,26 @@
     padding: 0px;
     position: absolute;
     margin-top: 50px;
+}
+
+
+.grid-item {
+    background-color: yellow;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 0px;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+}
+
+#grid1 {
+    text-align: center;
+}
+
+#header {
+    color: red;
+    height: 200px;
+    width: 1000px;
 }
 
 .header{
@@ -47,6 +71,7 @@
     top:auto;
     left:auto;
 }
+
 .mainlogin{
     width: 100px;
     height:100px;
@@ -55,3 +80,4 @@
 .right.hide-on-med-and-down{
     position: relative;
 }
+

@@ -27,7 +27,7 @@
     
           <h1><%=realtors.username%></h1>
 <div class = "container" id = "houses">
-      <h4>Create a new add</h4>
+      <h4>Create a new listing</h4>
       <form action='/houses' method="POST">
 
 
@@ -37,7 +37,7 @@
         </div>
 
         <div class = "input-field">
-        <input type = "zip" name ="address" placeholder = "Street Name, Zip, State"/>
+        <input type = "text" name ="address" placeholder = "Street Name, Zip, State"/>
         <label class = "active" for = "address">address</label>
         </div>
         
@@ -63,7 +63,10 @@
         
       <div>
         <textarea name = "body" placeholder = "House Listing Info Here"></textarea><br/>
-        <button type="submit" value = "Publish House">Publish House Listing</button>
+
+
+        <button class="btn waves-effect waves-light red  " type="submit" name="action">Publish House Listing
+    <i class="material-icons right">send</i>
        </div>
 
       </form>

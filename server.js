@@ -1,5 +1,5 @@
 //Set up modules here
-const PORT = 3000;
+// const PORT = 3000;
 const express = require("express");
 const app = express();
 const session = require('express-session');
@@ -45,6 +45,6 @@ app.use("/houses", housesController);
 
 app.use('/auth', authController);
 
-app.listen(PORT, err => {
-  console.log("Server listening on port: ", PORT);
+app.listen(process.env.PORT, err => {
+  console.log("Server listening on port: ", process.env.PORT);
 });

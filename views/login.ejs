@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel="stylesheet" href="/css/style.css">
         <script defer type="text/javascript" src="/js/app.js"></script>
         <script defer type="text/javascript" src= "/js/map.js"></script>
@@ -20,6 +21,11 @@
 
   <body>
   <header>
+
+    <a href="/houses">Home</a>
+  </header>
+ 
+
       <section>
             <nav>
                <div class="nav-wrapper teal">
@@ -34,39 +40,53 @@
 <main>
 <div class = "container register-container">
 <div class = "row" id = "form">
+
+
+  </head>
+
+  <body>
+
+
+  <div class = "container login-container" id = "register">
+
+
   <h1>Register</h1>
     <form action="/auth/register" method="POST">
-      <div class = "input-field">
-        <input type="text" name="name" require="true">
-        <label class = "active" for="name">Name</label>
-      </div>
 
-      <div class = "input-field">
-        <input type="text" name="username" required="true">
-        <label class = "active" for="username">Username</label>
-      </div>
+        <div class = "input-field">
+            <input type="text" name="name">
+            <label class = "active" for = "name">Name</label>
+        </div>
 
-      <div class = "input-field">
-        <input type="password" name="password" required="true">
-        <label class = "active" for = "password">Password</label>
-      </div>
+        <div class = "input-field">
+            <input type="text" name="username">
+            <label class = "active" for = "username">Username</label>
+        </div>
 
-      <div class = "input-field">
-        <input type = "text" name = "email" required="true">
-        <label class = "email" for = "email">Email</label>
-      </div>
+        <div class = "input-field">
+            <input type="password" name="password">
+            <label class = "active" for = "password">Password</label>
+        </div>
 
+        <div class = "input-field">
+            <input type = "text" name = "email">
+            <label class = "email" for = "email">Email</label>
+        </div>
 
-      <div>
-        <button type="submit">Register</button>
-        <button><a href="/houses">Home</a></button>
-      </div>
+            <div>
+                 <button class="btn waves-effect waves-light red " type="submit">Register <i class="material-icons right">send</i></button>
+                 
+            </div>
 
    </form>
   </div>
+
+
   </div>
  </main>   
  
+
+
     <!--JavaScript at end of body for optimized loading-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <footer class="page-footer teal">

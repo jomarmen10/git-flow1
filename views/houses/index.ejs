@@ -9,16 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css">
 
-    
-        <script defer type="text/javascript" src="/js/app.js"></script>
-        <script defer type="text/javascript" src= "/js/map.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
-            <title></title>
-
-
+    <script defer type="text/javascript" src="/js/app.js"></script>
+    <script defer type="text/javascript" src= "/js/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
+    <title></title>
   </head>
       <body>
         <header>
@@ -34,18 +31,26 @@
                          <ul class = "left hide-on-med-and-down">
                                 <li><a class = "waves-effect waves-light btn" href = "/auth/login">Register To Be A Realtor<i class="material-icons">contacts</i></a></li>
                          <ul class = "right hide-on-med-and-down">
+
                                <form action="/auth/login" method="POST">
                                       <li><input type="text" name="username" placeholder="username"></li>
                                       <li><input type="password" name="password" placeholder="password"></li>
                                 <li><a class = "waves-effect waves-light btn"><button>Login</button></a><li>
                           <ul class = "right hide-on-med-and-down">
                                 <small> <%=message%></small>    
+
                           </form>
                                
                   </div>
-                </nav> 
+
+                </nav>
+                          <ul class="sidenav" id="mobile-demo">
+                                <li><a href="/houses">Home</a></li>
+                                <li><a href="/auth/login">Logout</a></li>
+                         </ul>
+            </div>
       </header>
-   
+
 <main>
 
 
@@ -53,6 +58,7 @@
 <section>
    <ul id="list-of-houses">
               <%for(let i = 0; i < houses.length; i++) {%>
+
                    <li class="house"
                                   data-add="<%=houses[i].address%>"
                                   data-img="<%=houses[i].img%>"
@@ -86,6 +92,7 @@
 
 
          <div >
+
               <form id="location-form">
                   <input id="location-input" type="text" placeholder="enter address">
                       <div class="input-field">
