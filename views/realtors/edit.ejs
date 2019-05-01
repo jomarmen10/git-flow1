@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css">
+
+    
+        <script defer type="text/javascript" src="/js/app.js"></script>
+        <script defer type="text/javascript" src= "/js/map.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
+            <title></title>
+
     <title></title>
   </head>
   <body>
-    <div class="container">
+    
       <header>
-        <div class="col s12 #01579b light-blue darken-4">
-          <a href="/houses"><h1>Home</h1></a>
-        </div>
+        <section>
+            <nav>
+               <div class="nav-wrapper teal">
+                  <a href="#" class="brand-logo center">Logo</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="/houses">Home</a></li>
+               </ul>
+             
+          </nav>
+      </section>
       </header>
       <main>
-
-        <h1><%=realtor.name%></h1>
+<div class="container">
+        <h1 style ="color:teal">Profile:<%=realtor.name%> </h1>
         <form action="/realtor/<%=realtor._id%>?_method=PUT" method="POST">
           <input type="text" name="username" value="<%=realtor.username%>" placeholder="username"/> <br>
           <input type = "text" name = "email" value ="<%=realtor.email%>" placeholder="email"/> <br>

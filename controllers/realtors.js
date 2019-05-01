@@ -33,12 +33,13 @@ router.get("/:id", async (req, res) => {
       "houses"
     ).exec();
     let current;
-    if(showRealtors._id.toString() === req.session.realtorDbId.toString()){
-      current = true
+    if(req.session.logged){
+      if(showRealtors._id.toString() === req.session.realtorDbId.toString()){
+        current = true
+      }
     }
     res.render("realtors/show.ejs", {
       realtor: showRealtors,
-      logged: req.session.logged,
       current
     });
   } catch (err) {

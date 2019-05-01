@@ -1,5 +1,3 @@
-console.log("hello");
-// let options ={}
 let lat = 34.0522;
 let lng = -118.2437;
 
@@ -18,8 +16,7 @@ function initMap() {
 
   displayHouses(addMarker);
 
-  // displayHousesP(addMarker);
-  //FUNCTION  FOR SERVERAL MARKERS WITHOUT HARD CODE to be added in the loop
+  //FUNCTION  FOR SEVERAL MARKERS WITHOUT HARD CODE to be added in the loop
   function addMarker(props) {
     let marker = new google.maps.Marker({
       position: props.coords,
@@ -39,13 +36,7 @@ function initMap() {
 
 //reinitialize map with filter
 function reInitMap() {
-  //map options
 
-  // options = {
-  //   zoom: 13,
-  //   center: { lat, lng }
-  // };
-  //new map
   let map = new google.maps.Map(document.getElementById("map"), options);
   // displayHouses(addMarker);
   displayHousesP(addMarker);
@@ -66,12 +57,6 @@ function reInitMap() {
     }
   }
 }
-//script
-
-//script
-//call geocode
-//geocode();
-
 // get location
 let locationForm = document.getElementById("location-form");
 
@@ -118,14 +103,8 @@ function geocode() {
       initMap();
 
       reInitMap();
-      // console.log(lat);
 
-      let geometryOutput = `
-        <ul class="list-group">
-          <li class= "list-group-item"><strong>latitude</strong>:${lat}</li>
-          <li class= "list-group-item"><strong>longitude</strong>:${lng}</li>
-        </ul>
-        `;
+
     })
     .catch(function (error) {
       console.log(error);
@@ -134,11 +113,7 @@ function geocode() {
 
 function displayHouses(func) {
   let houses = document.querySelectorAll(".house");
-  // console.log(houses[0].attributes["1"].value); //address
-  // console.log(houses[0].attributes[2].value); // img
-  // console.log(houses[0].attributes[3].value); // price 
-  // console.log(houses[9].attributes[4].value); // price 
-  // console.log(houses[12].attributes[5].value) // type
+
   for (let i = 0; i < houses.length; i++) {
     locations = houses[i].attributes["1"].value.toString();
     axios
@@ -153,9 +128,7 @@ function displayHouses(func) {
         latitude = response.data.results[0].geometry.location.lat;
         long = response.data.results[0].geometry.location.lng;
 
-        //console.log(latitude);
-        // console.log(long);
-        // console.log(houses[0].attributes["2"].value);
+
         func({
           coords: {
             lat: latitude,
@@ -178,16 +151,17 @@ function displayHousesP(func) {
   let houses = document.querySelectorAll(".house");
   let price = Number(document.getElementById("maxPrice").value);
   let rooms = Number(document.getElementById("bedroomNb").value);
-  let type = document.getElementById("houseType").value.toString();
-  console.log("the type var  is " + type);
-  console.log("the type on db is " + houses[12].attributes[5].value)
+  //let type = document.getElementById("houseType").value.toString();
+
   for (let i = 0; i < houses.length; i++) {
     if (houses[i].attributes[3].value <= price &&
-      Number(houses[i].attributes[4].value) === rooms) {
-      //   to check house type but  not working need to be added 
-      // && houses[i].attributes[5].value === type ||"any"
-      // for room type not working 
-      //houses[i].attributes[5].value) === type 
+      Number(houses[i].attributes[4].value) <= rooms) {
+      //&& houses[i].attributes[5].value == type
+      console.log("the price of house" + houses[i].attributes[3].value)
+      console.log("the price on index" + price)
+      console.log("the rooms of house" + houses[i].attributes[4].value)
+      console.log("the price on index" + rooms)
+
       housesToDisplay.push(houses[i])
 
       locations = houses[i].attributes["1"].value.toString();
@@ -200,7 +174,7 @@ function displayHousesP(func) {
         })
         .then(function (response) {
           //  show object of address
-          //console.log(response);
+
           showHouseTitles(housesToDisplay)
 
           //geo
@@ -208,7 +182,7 @@ function displayHousesP(func) {
           long = response.data.results[0].geometry.location.lng;
           //console.log(latitude);
           // console.log(long);
-          console.log(houses[0].attributes["3"].value);
+          //console.log(houses[0].attributes["3"].value);
           func({
             coords: {
               lat: latitude,
@@ -225,7 +199,6 @@ function displayHousesP(func) {
     }
   }
 }
-
 const showHouseTitles = (houses) => {
   houses.forEach(house => house.style.display = "block")
 }

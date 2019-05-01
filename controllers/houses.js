@@ -63,7 +63,7 @@ router.get('/:id', async (req, res) => {
         _id: req.params.id
       }
     })
-    console.log('req.session.realtorDbId', req.session)
+
     res.render('houses/show.ejs', {
       house: foundHouse.houses[0],
       realtor: foundHouse,
