@@ -20,12 +20,6 @@
   </head>
 
   <body>
-  <header>
-
-    <a href="/houses">Home</a>
-  </header>
- 
-
       <section>
             <nav>
                <div class="nav-wrapper teal">
@@ -69,13 +63,14 @@
         </div>
 
         <div class = "input-field">
-            <input type = "text" name = "email">
-            <label class = "email" for = "email">Email</label>
+            <input id = "email" type = "email" class = "validate" name = "email">
+            <label  for = "email">Email</label>
+            <span class ="helper-text" data-error="wrong" data-sucess="right"></span>
         </div>
 
             <div>
                  <button class="btn waves-effect waves-light red " type="submit">Register <i class="material-icons right">send</i></button>
-                 
+
             </div>
 
    </form>
@@ -83,8 +78,9 @@
 
 
   </div>
- </main>   
- 
+ </main>
+
+
 
 
     <!--JavaScript at end of body for optimized loading-->
@@ -114,6 +110,6 @@
             </div>
           </div>
         </footer>
-   
+
   </body>
 </html>

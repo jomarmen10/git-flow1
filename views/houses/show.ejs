@@ -28,10 +28,12 @@
 </header>
 
     <div class="row">
-      
+
+
 
       <div class="col s6">
-        <h2 style = "color:teal">Location:</h2>
+        <h2 style = "color:teal">Location</h2>
+
         <div id="map"></div>
         <h3 style = "color:teal">Address:</h3>
         <h4 id="address"><%=house.address%></h4>
@@ -43,13 +45,11 @@
         <h4> $<%=house.price%> | <%=house.type%> | <%=house.rooms%>bd
         </h4>
         <p><%=house.body%></p>
-        <%if(logged){%>
-          <a href="/houses/<%=house._id%>/edit">edit</a>
-        <%}%>
+
       </div>
 
     </div>
-   
+
   </body>
     <footer class="page-footer teal">
           <div class="container">

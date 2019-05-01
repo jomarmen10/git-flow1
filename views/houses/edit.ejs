@@ -7,85 +7,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <title></title>
   </head>
-  <body>
-    
-      <section>
-            <nav>
-               <div class="nav-wrapper teal">
-                    <a href="#" class="brand-logo center">Logo</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="/houses">Home</a></li>
-               </ul>
-              </div>
-          </nav>
-      
 
-    </header>
+    <body>
+      <nav>
+        <div class="nav-wrapper teal">
+             <a href="#" class="brand-logo center">Logo</a>
+         <ul id="nav-mobile" class="left hide-on-med-and-down">
+             <li><a href="/houses">Home</a></li>
+        </ul>
+       </div>
+     </nav>
 
-<div class = "container" id = "register">
-      <h6>Realtor: <%=realtor.name%></h6>
-      <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
-        <div class = "input-field">
-        <input type="text" name="list" value="<%=house.list%>" placeholder="House Listing"/><br/>
-        <label class = "active" for = "list">Name</label>
-        </div>
 
-   <div class = "input-field">
-        <input type ="text" name ="img" value="<%=house.img%>" placeholder ="photo url here"/><br/>
-       <label class = "active" for = "img">Image</label>
-  </div>
+      <div class = "container" id = "register">
+        <h6>Realtor: <%=realtor.name%></h6>
+        <form action="/houses/<%=house._id%>?_method=PUT" method="POST">
+          <div class = "input-field">
+          <input type="text" name="list" value="<%=house.list%>" placeholder="House Listing"/><br/>
+          <label class = "active" for = "list">Name</label>
+      </div>
 
      <div class = "input-field">
-        <input type ="text" name ="address" value="<%=house.address%>" placeholder ="Street Name, Zip, State"/><br/>
-        <label class = "active" for = "address">Address</label>
-     </div>
-
-      <div class = "input-field">
-        <input type ="text" name ="price" value="<%=house.price%>" placeholder ="Price Range"/><br/>
-       <label class = "active" for = "price">Price</label>
-      </div>
-
-      <div class = "input-field">
-        <input type ="text" name ="type" value="<%=house.type%>" placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
-      <label class = "active" for = "type">Type</label>
-      </div>
-
-      <div class = "input-field">
-       <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
-       <label class = "active" for = "rooms">Rooms</label>
-
-      </div>
-
-
-        <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
-
-</div>
-
-
-    <div class="container">
-      <div class = "row">
-
-        <div style="float:left;">
-          <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-          </button>
-          </form>
-        </div>
-          
-        <div style="float:right;">
-          <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
-          <button class="btn waves-effect waves-light red  " type="submit" name="action">DELETE
-          <i class="material-icons right">send</i>
-          </button>
-          </form>
-        </div>
-      </div>
+          <input type ="text" name ="img" value="<%=house.img%>" placeholder ="photo url here"/><br/>
+         <label class = "active" for = "img">Image</label>
     </div>
-  </body>
-   <footer class="page-footer teal">
+
+       <div class = "input-field">
+          <input type ="text" name ="address" value="<%=house.address%>" placeholder ="Street Name, Zip, State"/><br/>
+          <label class = "active" for = "address">Address</label>
+       </div>
+
+        <div class = "input-field">
+          <input type ="text" name ="price" value="<%=house.price%>" placeholder ="Price Range"/><br/>
+         <label class = "active" for = "price">Price</label>
+        </div>
+
+        <div class = "input-field">
+          <input type ="text" name ="type" value="<%=house.type%>" placeholder ="House Type: Condos, Apts, Studio, House"/><br/>
+        <label class = "active" for = "type">Type</label>
+        </div>
+
+        <div class = "input-field">
+         <input type ="text" name ="rooms" value="<%=house.rooms%>" placeholder ="Number of Rooms"/>
+         <label class = "active" for = "rooms">Rooms</label>
+
+        </div>
+
+          <textarea name = "body" value = "<%=house.body%>" placeholder = "House Listing Info Here"></textarea><br/>
+
+    </div>
+
+
+      <div class="container">
+        <div class = "row">
+
+          <div style="float:left;">
+            <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
+            </form>
+          </div>
+
+          <div style="float:right;">
+            <form action = "/houses/<%=house._id%>?_method=DELETE" method = "POST">
+            <button class="btn waves-effect waves-light red  " type="submit" name="action">DELETE
+            <i class="material-icons right">send</i>
+            </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer teal">
+
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -110,4 +106,7 @@
             </div>
           </div>
         </footer>
+
+    </body>
+
 </html>

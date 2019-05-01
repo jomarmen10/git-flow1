@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/css/style.css">
 
-    
+
         <script defer type="text/javascript" src="/js/app.js"></script>
         <script defer type="text/javascript" src= "/js/map.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAH_yPmSaWOZnxvuNU157kgFdo0D8kaI&callback=initMap"></script>
@@ -23,6 +23,7 @@
   <body>
     <header>
 
+
      <section>
             <nav>
                <div class="nav-wrapper teal">
@@ -30,30 +31,29 @@
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="/houses">Home</a></li>
                </ul>
-             
+
           </nav>
       </section>
 
     </header>
     <main>
-      <h1 style = "color:teal"> Admin Page</h1>
-      <h2 style = "color:teal">Realtors</h2>
-      <ul>
-        <% for (let i=0; i<realtor.length; i++){%>
-          <a href="/realtor/<%=realtor[i]._id%>">
+      <div class="container">
+        <h1 style = "color:teal"> Admin Page</h1>
+        <h2 style = "color:teal">Realtors</h2>
+        <ul>
+          <% for (let i=0; i<realtor.length; i++){%>
+            <a href="/realtor/<%=realtor[i]._id%>">
+              <li><%=realtor[i].name%><br>
+                 Username: <%=realtor[i].username%>
+                 Name:  <%=realtor[i].name%>
+                 Email: <%=realtor[i].email%>
+                <img src = "<%=realtor[i].houses.img%>">
+              </li>
+            </a>
+          <%}%>
+        </ul>
+      </div>
 
-            <li><%=realtor[i].name%><br>
-               Username: <%=realtor[i].username%>
-               Name:  <%=realtor[i].name%>
-               Email: <%=realtor[i].email%>
-
-
-
-              <img src = "<%=realtor[i].houses.img%>">
-            </li>
-          </a>
-        <%}%>
-      </ul>
 
     </main>
   </body>

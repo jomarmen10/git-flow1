@@ -21,7 +21,7 @@
       </section>
 </header>
       <div class="row">
-      
+
 
         <div class="col s6">
 
@@ -38,13 +38,15 @@
             <input type="text" name="mail"><br>
             Comment:<br>
             <input type="text" name="comment" size="50"><br><br>
-            <button class="btn" type="button" value="Send" >Send</button>
-            <button class="btn" type="reset" value="Reset">Reset</button>
-
+            <!-- <button class="btn" type="button" value="Send">Send</button>  -->
+            <button class="btn" type="reset" value="Reset">Send</button>
           </form>
+
             <br>
-          <%if(logged && current){%>
+          <%if(current){%>
             <a href="/realtor/<%=realtor._id%>/edit"> <button class='btn'>Settings</button> </a>
+            <a href="/houses/new"> <button class='btn'>List New House</button> </a>
+
           <%}%>
         </div>
 
@@ -56,6 +58,9 @@
               <div class="card-panel hoverable">
                 <li><h5><%=realtor.houses[i].address%></h5> <br>
                   <a href="/houses/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
+                    <%if(current){%>
+                      <a href="/houses/<%=realtor.houses[i]._id%>/edit">edit</a>
+                    <%}%>
                 </a></li>
               </div>
             <% } %>
