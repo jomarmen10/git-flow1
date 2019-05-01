@@ -27,3 +27,22 @@
 
 //materizalize for map selection options
  M.AutoInit();
+
+// $(document).ready(function(){
+//   $('.carousel').carousel(instance.next(1));
+//   $('.carousel').carousel(instance.set(1));
+//   $('.carousel').carousel(instance.destory(1));
+// });
+
+// $('.carousel.carousel-slider').carousel({
+//   fullWidth: false,
+//   indicators: true,
+//   numVisible: 5,
+//   dist:-100,
+//   noWrap: false,
+// });
+
+
+
+//footer
+
