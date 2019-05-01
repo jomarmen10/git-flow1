@@ -17,110 +17,108 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"defer></script>
     <title></title>
   </head>
-      <body>
-        <header>
-            <div class = "header">
-                <nav>
-                  <div class="nav-wrapper teal">
-                     <a href="#!" class="brand-logo center">Logo</a>
-                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                          <ul class="left hide-on-med-and-down">
-                                <li><a href="/auth/login">Logout</a></li>
-                                <li><a href="/houses">Home</a></li>
-                         </ul>
-                         <ul class = "right hide-on-med-and-down">
-                                <li><a class = "waves-effect waves-light btn" href = "/auth/login">Register To Be A Realtor<i class="material-icons">contacts</i></a></li>
-                         <ul class = "right hide-on-med-and-down">
-                                <li><form action="/auth/login" method="POST">
-                                      <input type="text" name="username" placeholder="username">
-                                      <input type="password" name="password" placeholder="password">
-                                        <small> <%=message%></small>
-                                <a href="/houses/new"><button type="submit">Login</button></a></li>
+  <body>
+  <div class = "header">
+    <nav>
+      <div class="nav-wrapper teal">
+        <a href="#!" class="brand-logo center">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+        <li><a href="/auth/logout">Logout</a></li>
+        <li><a href="/houses">Home</a></li>
+        </ul>
+        <ul class = "right hide-on-med-and-down">
+        <li><a class = "waves-effect waves-light btn" href = "/auth/login">Register To Be A Realtor<i class="material-icons">contacts</i></a></li>
+        <ul class = "right hide-on-med-and-down">
+        <li><form action="/auth/login" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <small> <%=message%></small>
+        <button type="submit">Login</button></li>
 
-                          </form>
-                  </div>
-                </nav>
-                          <ul class="sidenav" id="mobile-demo">
-                                <li><a href="/houses">Home</a></li>
-                                <li><a href="/auth/login">Logout</a></li>
-                         </ul>
-            </div>
-      </header>
-<main>
-
-
-
-<section>
-   <ul id="list-of-houses">
-              <%for(let i = 0; i < houses.length; i++) {%>
-
-                   <li class="house"
-                                  data-add="<%=houses[i].address%>"
-                                  data-img="<%=houses[i].img%>"
-                                  data-price="<%=houses[i].price%>"
-                                  data-rooms="<%=houses[i].rooms%>"
-                                  data-type="<%=houses[i].type%>" >
-                  </li>
-
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
-          <img src="<%=houses[i].img%>">
-          <span class="card-title"><%=houses[i].list%></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light teal" href="/houses/<%=houses[i]._id%>"><i class="material-icons">visibility</i></a>
-        </div>
-        <div class="card-content">
-          <p><%=houses[i].body%></p>
-        </div>
+        </form>
       </div>
-    </div>
+    </nav>
+  <ul class="sidenav" id="mobile-demo">
+  <li><a href="/houses">Home</a></li>
+  <li><a href="/auth/logout">Logout</a></li>
+  </ul>
   </div>
-     <%}%>
-    </ul>
-</section>
-
-<section>
+  <main>
 
 
 
+  <section>
+  <ul id="list-of-houses">
+  <%for(let i = 0; i < houses.length; i++) {%>
+
+  <li class="house"
+  data-add="<%=houses[i].address%>"
+  data-img="<%=houses[i].img%>"
+  data-price="<%=houses[i].price%>"
+  data-rooms="<%=houses[i].rooms%>"
+  data-type="<%=houses[i].type%>" >
+  </li>
+
+  <div class="col s12 m6">
+  <div class="card">
+  <div class="card-image">
+  <img src="<%=houses[i].img%>">
+  <span class="card-title"><%=houses[i].list%></span>
+  <a class="btn-floating halfway-fab waves-effect waves-light teal" href="/houses/<%=houses[i]._id%>"><i class="material-icons">visibility</i></a>
+  </div>
+  <div class="card-content">
+  <p><%=houses[i].body%></p>
+  </div>
+  </div>
+  </div>
+  </div>
+  <%}%>
+  </ul>
+  </section>
+
+  <section>
 
 
-         <div >
 
-              <form id="location-form">
-                  <input id="location-input" type="text" placeholder="enter address">
-                      <div class="input-field">
-                        <select id="maxPrice" name="price">
-                                <option value="9999999">Max Price</option>
-                                <option value="500">less than 500</option>
-                                <option value="1000">less than 1000</option>
-                                <option value="2000">less than 2000</option>
 
-                        </select>
-                      </div>
-                      <div class="input-field">
-                        <select id="bedroomNb" >
-                                <option value="9999999">All Bedrooms</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                        </select>
-                      </div>
-                      <div class="input-field">
-                        <select id="houseType" >
-                                <option value="any">Type</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="House">House</option>
-                                <option value="Condos">Condos</option>
-                        </select>
-                      </div>
-                                    <button type="submit">Submit</button>
 
-      </div>
-</section>
-<section>
-      <div id="map"></div>
-</section>
+  <div >
+
+  <form id="location-form">
+  <input id="location-input" type="text" placeholder="enter address">
+  <div class="input-field">
+  <select id="maxPrice" name="price">
+  <option value="9999999">Max Price</option>
+  <option value="500">less than 500</option>
+  <option value="1000">less than 1000</option>
+  <option value="2000">less than 2000</option>
+
+  </select>
+  </div>
+  <div class="input-field">
+  <select id="bedroomNb" >
+  <option value="9999999">All Bedrooms</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  </select>
+  </div>
+  <div class="input-field">
+  <select id="houseType" >
+  <option value="any">Type</option>
+  <option value="apartment">Apartment</option>
+  <option value="House">House</option>
+  <option value="Condos">Condos</option>
+  </select>
+  </div>
+  <button type="submit">Submit</button>
+
+  </div>
+  </section>
+  <section>
+  <div id="map"></div>
+  </section>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
