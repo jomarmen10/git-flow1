@@ -28,26 +28,22 @@
                      <a href="#!" class="brand-logo center">Logo</a>
                      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                           <ul class="left hide-on-med-and-down">
-                                <li><a href="/auth/login">Logout</a></li>
+                                <li><a href="/auth/logout">Logout</a></li>
                                 <li><a href="/houses">Home</a></li>
                          </ul>
                          <ul class = "left hide-on-med-and-down">
                                 <li><a class = "waves-effect waves-light btn" href = "/auth/login">Register To Be A Realtor<i class="material-icons">contacts</i></a></li>
                          <ul class = "right hide-on-med-and-down">
-                                <li><form action="/auth/login" method="POST">
-                                      <input type="text" name="username" placeholder="username">
-                                      <input type="password" name="password" placeholder="password">
-                                        <small> <%=message%></small>
-                                <a href="/houses/new"><button type="submit">Login</button></a></li>
-                                
+                               <form action="/auth/login" method="POST">
+                                      <li><input type="text" name="username" placeholder="username"></li>
+                                      <li><input type="password" name="password" placeholder="password"></li>
+                                <li><a class = "waves-effect waves-light btn"><button>Login</button></a><li>
+                          <ul class = "right hide-on-med-and-down">
+                                <small> <%=message%></small>    
                           </form>
+                               
                   </div>
-                </nav>
-                          <ul class="sidenav" id="mobile-demo">
-                                <li><a href="/houses">Home</a></li>
-                                <li><a href="/auth/login">Logout</a></li>
-                         </ul>
-            </div>    
+                </nav> 
       </header>
    
 <main>
@@ -64,7 +60,7 @@
                                   data-rooms="<%=houses[i].rooms%>"
                                   data-type="<%=houses[i].type%>" >
                   </li>
-
+<div class = "container">
     <div class="col s12 m6">
       <div class="card">
         <div class="card-image">
@@ -77,9 +73,10 @@
         </div>
       </div>
     </div>
-  </div>
+ 
      <%}%>
     </ul>
+  </div>
 </section>
 
 <section>
