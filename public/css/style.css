@@ -72,3 +72,12 @@
     left:auto;
 }
 
+.mainlogin{
+    width: 100px;
+    height:100px;
+}
+
+.right.hide-on-med-and-down{
+    position: relative;
+}
+
