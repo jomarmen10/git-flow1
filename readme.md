@@ -35,6 +35,5 @@ message to the realtor let them know they have go throught a process of verifica
 * Adding a redirect to registration with a module to allow the new realtor about the time it takes to
 verify their account and accept to use our site.
 
-## Bugs
-* One minor bug with didnt have time to fix with the map not displaying individual houses info
-* Had an system where the user inputs their information to contact the realtor they would get a confirmation message from the realtor's email that they will contact them later as soon as possible..
+## Live Demo
+(https://evening-cove-84378.herokuapp.com/houses)
