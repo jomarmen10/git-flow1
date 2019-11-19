@@ -1,24 +1,23 @@
 //Set up modules here
-// const PORT = 3000;
 const express = require("express");
 const app = express();
 const session = require('express-session');
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-const housesController = require("./controllers/houses");
-const realtorsController = require("./controllers/realtors");
-const authController = require("./controllers/authController");
 require('dotenv').config()
 require("./db/db.js");
+// MONGO_URI=mongodb+srv://moneyteam:money123@cluster0-lij6q.mongodb.net/test?retryWrites=true
 
 
-// const session = require('express-session');
+const housesRoutes = require("./routes/house");
+const realtorsController = require("./controllers/realtors");
+const authController = require("./controllers/authController");
 
 
-//require modules here
+
+
 
 //MiddleWare Area
-app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(express.static('public'));
@@ -29,21 +28,12 @@ app.use(session({
   saveUninitalized: false,
 }));
 
-//authController before other controllers
-// app.use(sessions({
-//   secret: 'Random Secret String',
-//   resave: false,
-//   saveUninitialized: false,
-// }));
-
-////////
-
-////////
+// test
+// app.use("/", houseRoutes)
+// test end
 
 app.use("/realtor", realtorsController);
-
-app.use("/houses", housesController);
-
+app.use("/houses", housesRoutes);
 app.use('/auth', authController);
 
 app.listen(process.env.PORT, err => {
