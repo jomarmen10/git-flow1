@@ -23,39 +23,6 @@ async function index(req, res){
   }
 }
 
-// router.get("/new", (req, res) => {
-//   res.render("realtors/new.ejs");
-// });
-
-//
-// router.post("/", async (req, res) => {
-//   try {
-//     const newRealtors = await Realtor.create(req.body);
-//     res.redirect("/realtor");
-//   } catch (err) {
-//     res.send(err);
-//   }
-// });
-
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const showRealtors = await Realtor.findById(req.params.id).populate(
-//       "houses"
-//     ).exec();
-//     let current;
-//     if(req.session.logged){
-//       if(showRealtors._id.toString() === req.session.realtorDbId.toString()){
-//         current = true
-//       }
-//     }
-//     res.render("realtors/show.ejs", {
-//       realtor: showRealtors,
-//       current
-//     });
-//   } catch (err) {
-//     res.send(err);
-//   }
-// });
 
 async function show(req, res){
   try {
@@ -77,19 +44,7 @@ async function show(req, res){
   }
 }
 
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const deletedRealtor = await Realtor.findByIdAndRemove(req.params.id);
-//     const deleteHouse = await House.deleteMany({
-//       _id: {
-//         $in: deletedRealtor.houses
-//       }
-//     });
-//     res.redirect("/realtor");
-//   } catch (err) {
-//     res.send(err);
-//   }
-// });
+
 
 async function deleteRealtor(req, res){
   try {
@@ -99,27 +54,13 @@ async function deleteRealtor(req, res){
         $in: deletedRealtor.houses
       }
     });
-    res.redirect("/realtor");
+    res.redirect("/");
   } catch (err) {
     res.send(err);
   }
 }
 
-// router.get("/:id/edit", async (req, res) => {
-//   try {
-//     const foundRealtor = await Realtor.findById(req.params.id);
-//     if (foundRealtor._id.toString() === req.session.realtorDbId){
-//       res.render("realtors/edit.ejs", {
-//         realtor: foundRealtor,
-//         id: req.params.id
-//       });
-//     } else {
-//       res.redirect(`/realtor/${req.params.id}`)
-//     }
-//   } catch (err) {
-//     res.send(err);
-//   }
-// });
+
 
 async function edit(req, res){
   try {
@@ -137,19 +78,7 @@ async function edit(req, res){
   }
 }
 
-// router.put("/:id", async (req, res) => {
-//   try {
-//     const updatedRealtors = await Realtor.findByIdAndUpdate(
-//       req.params.id,
-//       req.body, {
-//         new: true
-//       }
-//     );
-//     res.redirect("/realtor");
-//   } catch (err) {
-//     res.send(err);
-//   }
-// });
+
 
 async function update(req, res){
   try {

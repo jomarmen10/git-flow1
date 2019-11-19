@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
     req.session.logged = true;
     req.session.realtorDbId = createdRealtor._id;
     console.log("redirecting..")
-    res.redirect('/houses')
+    res.redirect('/')
     // res.redirect(`/realtor/${createdRealtor._id}`);
 
   } catch(err){
@@ -64,11 +64,11 @@ router.post('/login', async (req, res) => {
         console.log(foundRealtor.password)
         console.log(req.body.password)
         req.session.message = "Username or password is incorrect";
-        res.redirect('/houses');
+        res.redirect('/');
       }
     } else{
       req.session.message = 'Username or Password is incorrect';
-      res.redirect('/houses');
+      res.redirect('/');
     }
   } catch(err){
     res.send(err);
