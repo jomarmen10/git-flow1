@@ -30,8 +30,10 @@
             <ul class="left hide-on-med-and-down">
               <li><a href="/auth/logout">Logout</a></li>
               <li><a href="/">Home</a></li>
+              <% if(logged){%>
+                <li><a href="/realtor/<%=profileId%>">profile</a></li>
 
-
+              <% }%>
             </ul>
             <ul class = "left hide-on-med-and-down">
               <li><a class = "waves-effect waves-light btn" href = "/auth/login">Register To Be A Realtor<i class="material-icons">contacts</i></a></li>

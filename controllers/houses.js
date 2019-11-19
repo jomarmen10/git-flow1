@@ -35,6 +35,8 @@ async function index(req, res){
       realtor: req.session.name,
       houses: foundHouses,
       message: req.session.message,
+      logged: req.session.logged,
+      profileId: req.session.realtorDbId
     })
 
   } catch (error) {
