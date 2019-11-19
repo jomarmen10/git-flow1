@@ -15,7 +15,7 @@
                   <a href="#" class="brand-logo center">Logo</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                   <li><a href="/">Home</a></li>
-  
+
                </ul>
               </div>
           </nav>
@@ -46,7 +46,7 @@
             <br>
           <%if(current){%>
             <a href="/realtor/<%=realtor._id%>/edit"> <button class='btn'>Settings</button> </a>
-            <a href="/houses/new"> <button class='btn'>List New House</button> </a>
+            <a href="/new"> <button class='btn'>List New House</button> </a>
 
           <%}%>
         </div>
@@ -58,9 +58,9 @@
 
               <div class="card-panel hoverable">
                 <li><h5><%=realtor.houses[i].address%></h5> <br>
-                  <a href="/houses/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
+                  <a href="/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
                     <%if(current){%>
-                      <a href="/houses/<%=realtor.houses[i]._id%>/edit">edit</a>
+                      <a href="/<%=realtor.houses[i]._id%>/edit">edit</a>
                     <%}%>
                 </a></li>
               </div>

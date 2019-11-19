@@ -50,7 +50,7 @@ async function create(req, res){
     const createList = await House.create(req.body);
     findRealtor.houses.push(createList);
     findRealtor.save();
-    res.redirect('/houses')
+    res.redirect(`/realtor/${req.session.realtorDbId}`)
   } catch (err) {
     res.send(err)
   }
@@ -79,7 +79,6 @@ async function show(req, res){
 }
 
 
-
 async function edit(req, res){
   try {
     const foundOne = await Realtor.findOne({
@@ -106,7 +105,7 @@ async function update(req, res){
     const foundHouse = await House.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     });
-    res.redirect('/houses')
+    res.redirect(`/realtor/${req.session.realtorDbId}`)
   } catch (error) {
     res.send(error);
   }
@@ -122,7 +121,7 @@ async function deleteOne(req, res){
     });
     await foundRealtor.houses.remove(req.params.id);
     await foundRealtor.save();
-    res.redirect('/houses');
+    res.redirect(`/realtor/${req.session.realtorDbId}`);
   } catch (error) {
     res.send(error);
   }
