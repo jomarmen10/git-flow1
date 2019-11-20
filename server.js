@@ -14,8 +14,6 @@ const authController = require("./controllers/authController");
 
 
 
-
-
 //MiddleWare Area
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
@@ -27,13 +25,11 @@ app.use(session({
   saveUninitalized: false,
 }));
 
-// test
-// app.use("/", houseRoutes)
-// test end
 
-app.use("/realtor", realtorsRoutes);
 app.use("/", housesRoutes);
 app.use('/auth', authController);
+app.use("/realtor", realtorsRoutes);
+
 
 app.listen(process.env.PORT, err => {
   console.log("Server listening on port: ", process.env.PORT);
