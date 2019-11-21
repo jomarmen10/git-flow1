@@ -52,7 +52,8 @@ async function create(req, res){
     const createList = await House.create(req.body);
     findRealtor.houses.push(createList);
     findRealtor.save();
-    res.redirect(`/realtor/${req.session.realtorDbId}`)
+    res.redirect(`${createList._id}`)
+
   } catch (err) {
     res.send(err)
   }

@@ -35,10 +35,13 @@ async function show(req, res){
         current = true
       }
     }
+
     res.render("realtors/show.ejs", {
       realtor: showRealtors,
-      current
+      current,
+      userId: req.session.realtorDbId
     });
+
   } catch (err) {
     res.send(err);
   }

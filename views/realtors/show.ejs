@@ -1,100 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title></title>
-  </head>
-  <body>
 
-    <main>
- <header>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Profile</title>
+</head>
+
+<body>
+
+  <main>
+    <header>
       <section>
-            <nav>
-               <div class="nav-wrapper teal">
-                  <a href="#" class="brand-logo center">Logo</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                  <li><a href="/">Home</a></li>
-
-               </ul>
-              </div>
-          </nav>
+        <nav>
+          <div class="nav-wrapper blue-grey darken-3">
+            <a href="/" class="brand-logo center">Money Team</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/">Home</a></li>
+              <%if(current){%>
+              <li><a href="/realtor/<%=realtor._id%>/edit">Setting</a></li>
+              <li><a href="/new">List New House</a></li>
+              <%} else {%>
+              <li><a href="/realtor/<%=userId%>">profile</a></li>
+              <%}%>
+            </ul>
+          </div>
+        </nav>
       </section>
-</header>
-      <div class="row">
+    </header>
+    <div class="row">
 
+      <div class="col s6">
 
-        <div class="col s6">
+        <h1 style="color:teal">Realtor <%=realtor.name%>!</h1>
 
-          <h1 style="color:teal">Realtor  <%=realtor.name%>!</h1>
+              <br><br>
 
-          <br><br>
+              <h4>Email me</h4> <br>
 
-          <h4>Email me</h4> <br>
+              <form action="<%=realtor.email%>" method="post" enctype="text/plain">
+                Name:<br>
+                <input type="text" name="name"><br>
+                E-mail:<br>
+                <input type="text" name="mail"><br>
+                Comment:<br>
+                <input type="text" name="comment" size="50"><br><br>
 
-          <form action="<%=realtor.email%>" method="post" enctype="text/plain">
-            Name:<br>
-            <input type="text" name="name"><br>
-            E-mail:<br>
-            <input type="text" name="mail"><br>
-            Comment:<br>
-            <input type="text" name="comment" size="50"><br><br>
-            <!-- <button class="btn" type="button" value="Send">Send</button>  -->
-            <button class="btn" type="reset" value="Reset">Send</button>
-          </form>
+                <button class="btn blue darken-4" type="reset" value="Reset">Send</button>
+              </form>
 
-            <br>
-          <%if(current){%>
-            <a href="/realtor/<%=realtor._id%>/edit"> <button class='btn'>Settings</button> </a>
-            <a href="/new"> <button class='btn'>List New House</button> </a>
+              <br>
 
-          <%}%>
-        </div>
+          </div>
 
-        <div class="col s6 center-align"">
-          <h2>House for sale</h2>
-          <ul>
-            <% for (let i = 0; i < realtor.houses.length; i++) {%>
+          <div class="col s6 center-align">
+            <% if(!realtor.houses.length){%>
+            <h2>List House Now!!</h2>
+
+            <a class="btn-floating btn-large waves-effect waves-light blue darken-4" href="/new"><i class="material-icons">add</i></a>
+            <% } else {%>
+            <ul>
+              <% for (let i = 0; i < realtor.houses.length; i++) {%>
 
               <div class="card-panel hoverable">
-                <li><h5><%=realtor.houses[i].address%></h5> <br>
-                  <a href="/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
-                    <%if(current){%>
-                      <a href="/<%=realtor.houses[i]._id%>/edit">edit</a>
-                    <%}%>
-                </a></li>
-              </div>
-            <% } %>
-          </ul>
-        </div>
+                <li>
+                  <h5><%=realtor.houses[i].address%></h5> <br>
+                  <%if(current){%>
+                  <a href="/<%=realtor.houses[i]._id%>/edit"><i class="small material-icons">edit</i></a>
+                  <%}%>
+                    <a href="/<%=realtor.houses[i]._id%>"><img src="<%=realtor.houses[i].img%>" width="300px">
 
-      </div>
-    </main>
+                  </a>
+                </li>
+              </div>
+              <% } %>
+            </ul>
+            <%}%>
 
-     <footer class="page-footer teal">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
+
           </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 MoneyTeam100
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
+
           </div>
-        </footer>
-  </body>
+  </main>
+</body>
+
 </html>
