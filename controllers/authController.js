@@ -6,8 +6,10 @@ const bcrypt = require('bcryptjs');
 let user = null;
 
 router.get('/login', (req, res, next) => {
-  res.render('login.ejs',
-   { message: req.session.message})
+  res.render('login.ejs', {
+    // message: req.session.message
+    message: ""
+  })
 });
 
 router.post('/register', async (req, res) => {
@@ -38,7 +40,9 @@ router.post('/register', async (req, res) => {
     // res.redirect(`/realtor/${createdRealtor._id}`);
 
   } catch(err){
-    res.send(err)
+    res.render('login.ejs',{
+      message: "please fill out the form"
+    })
   }
 });
 
@@ -78,17 +82,13 @@ router.post('/login', async (req, res) => {
 });
 
 
-
-/////////Working ok//////
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if(err){
       res.send(err);
     } else {
       console.log(req.session, 'logged out')
-      res.redirect('/auth/login');
-      //req.session.message;
-
+      res.redirect('/');
     }
   })
 })

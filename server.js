@@ -26,9 +26,15 @@ app.use(session({
 }));
 
 
+app.get('/test', (req,res)=>{
+  res.render('signup.ejs')
+})
+
 app.use("/", housesRoutes);
 app.use('/auth', authController);
 app.use("/realtor", realtorsRoutes);
+
+
 
 
 app.listen(process.env.PORT, err => {

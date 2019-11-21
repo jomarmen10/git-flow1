@@ -60,11 +60,13 @@ function reInitMap() {
 // get location
 let locationForm = document.getElementById("location-form");
 
-locationForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+if(locationForm){
+  locationForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    geocode();
+  });
+}
 
-  geocode();
-});
 
 let longitude;
 let latitude;

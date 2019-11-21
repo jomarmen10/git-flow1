@@ -54,6 +54,7 @@ async function deleteRealtor(req, res){
         $in: deletedRealtor.houses
       }
     });
+    req.session.destroy();
     res.redirect("/");
   } catch (err) {
     res.send(err);
