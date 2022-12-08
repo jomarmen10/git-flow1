@@ -19,10 +19,10 @@
   "homepage": "https://github.com/jomarmen10/git-flow1#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-session": "^1.16.1",
     "lodash": "^4.17.15",
     "method-override": "^3.0.0",
